@@ -6,6 +6,8 @@ previously maintained in TemporalDiffusionPolicy. Training reads the existing
 TemporalDiffusionPolicy Zarr episodes directly; no data collection or HDF5
 conversion is required.
 
+Unless stated otherwise, run commands from the TC-DP clone's `ldp/` subfolder.
+
 ## Download the current paper checkpoints and rollouts
 
 The six selected PTP checkpoints and six evaluation datasets for the main
@@ -40,8 +42,13 @@ Use `--stage-dir` to change `/tmp/tcdp-paper-hf-upload/ldp` staging.
 ## Environment
 
 ```bash
-conda activate robodiff-lh-5090
-cd /home/sydney1/Repos/ldp
+# From the TC-DP clone root:
+python3.10 -m venv .venv-ldp
+source .venv-ldp/bin/activate
+pip install torch==2.7.0+cu128 torchvision==0.22.0+cu128 --index-url https://download.pytorch.org/whl/cu128
+pip install -r ldp/requirements-temporal.txt
+pip install -e ldp
+cd ldp
 ```
 
 The launchers default to `MUJOCO_GL=egl`, `SDL_VIDEODRIVER=dummy`, and
@@ -64,7 +71,7 @@ horizon, eight executed actions, full PTP (`past_action_pred=true`,
 with no crop and `SpatialMeanPool`. Online training rollouts are disabled;
 checkpoint selection uses held-out validation loss.
 
-From the repository root, set the local demonstration path and run:
+From the `ldp/` subfolder, set the local demonstration path and run:
 
 ```bash
 ENV=liftqa
@@ -100,7 +107,7 @@ Repeat evaluation for training seeds 43 and 44, and for WaitAtGoal. Evaluation
 is a separate step; training does not launch it automatically.
 
 The current comparison table is generated in TemporalDiffusionPolicy using
-`python -m temporal_diffusion_policy.analysis.report` (the default `paper_main`
+`python src/temporal_diffusion_policy/analysis/report.py` from the TC-DP clone root (the default `paper_main`
 preset), or `--config main_multiseed` for the simulation-only comparison. Point
 its `tc_dp_paper_multiseed` study lists at the three `rollouts.zarr` outputs per
 environment. The report computes each metric per training seed and reports
@@ -145,18 +152,18 @@ duration.
 #### WaitAtGoal
 
 ```bash
-cd ~/Repos/ldp && conda activate robodiff-lh-5090 
+# Run from the ldp/ subfolder, with the LDP environment active.
 GPU=1 ENV=waitatgoal HORIZON=32 N_OBS=16 SUBSAMPLE=1 N_ACTION=8 EPOCHS=500 BATCH=128; RUN=${ENV}_h${HORIZON}_o${N_OBS}_s${SUBSAMPLE}_a${N_ACTION}_e${EPOCHS}; LDP_CROP_SHAPE=null LDP_IMAGE_POOL_CLASS=SpatialMeanPool CUDA_VISIBLE_DEVICES=$GPU ./train_temporal_long_context.sh $ENV data/outputs/$RUN horizon=$HORIZON n_obs_steps=$N_OBS n_action_steps=$N_ACTION task.dataset.subsample_frames=$SUBSAMPLE task.env_runner.subsample_frames=$SUBSAMPLE dataloader.batch_size=$BATCH val_dataloader.batch_size=$BATCH training.num_epochs=$EPOCHS && CUDA_VISIBLE_DEVICES=$GPU ./eval_temporal_policy.sh $ENV data/outputs/$RUN/checkpoints/latest.ckpt data/inference/${RUN}_eval --n_test=200 --n_test_vis=10 --test_start_seed=200 --max_steps=400 --num_inference_steps=100
 ```
 
 #### LiftQA
 
 ```bash
-cd ~/Repos/ldp && conda activate robodiff-lh-5090 
+# Run from the ldp/ subfolder, with the LDP environment active.
 GPU=0 ENV=liftqa HORIZON=32 N_OBS=16 SUBSAMPLE=1 N_ACTION=8 EPOCHS=500 BATCH=128; RUN=${ENV}_h${HORIZON}_o${N_OBS}_s${SUBSAMPLE}_a${N_ACTION}_e${EPOCHS}; LDP_CROP_SHAPE=null LDP_IMAGE_POOL_CLASS=SpatialMeanPool CUDA_VISIBLE_DEVICES=$GPU ./train_temporal_long_context.sh $ENV data/outputs/$RUN horizon=$HORIZON n_obs_steps=$N_OBS n_action_steps=$N_ACTION task.dataset.subsample_frames=$SUBSAMPLE task.env_runner.subsample_frames=$SUBSAMPLE dataloader.batch_size=$BATCH val_dataloader.batch_size=$BATCH training.num_epochs=$EPOCHS && CUDA_VISIBLE_DEVICES=$GPU ./eval_temporal_policy.sh $ENV data/outputs/$RUN/checkpoints/latest.ckpt data/inference/${RUN}_eval --n_test=200 --n_test_vis=10 --test_start_seed=200 --max_steps=400 --num_inference_steps=100
 ```
 
-cd ~/Repos/ldp && conda activate robodiff-lh-5090 
+# Run from the ldp/ subfolder, with the LDP environment active.
 GPU=1 ENV=liftqa HORIZON=32 N_OBS=16 SUBSAMPLE=1 N_ACTION=8 EPOCHS=500 BATCH=128; RUN=liftqa_h32_o16_s1_a8_e500; LDP_CROP_SHAPE=null LDP_IMAGE_POOL_CLASS=SpatialMeanPool && CUDA_VISIBLE_DEVICES=$GPU ./eval_temporal_policy.sh $ENV data/outputs/$RUN/checkpoints/epoch=0249-val_loss=0.142.ckpt data/inference/${RUN}_epoch250_eval --n_test=200 --n_test_vis=10 --test_start_seed=200 --max_steps=400 --num_inference_steps=100
 
 
@@ -178,7 +185,9 @@ action, reward, and done flag. WaitAtGoal also records `wait_time`,
 `step_count`, and `wait_times_each_visit`. The presets evaluate 200 fixed-seed
 test episodes and record MP4s for the first 10.
 
+The launcher defaults to demonstrations in `../data/demonstration/`. Set
+`TC_DP_DEMONSTRATION_ROOT` to use a different demonstration directory.
 The source datasets are:
 
-- `/mnt/shared/TemporalDiffusionPolicy/data/demonstration/wait_at_goal_dataset_v4.zarr`
-- `/mnt/shared/TemporalDiffusionPolicy/data/demonstration/lift_qa_v2.zarr`
+- `../data/demonstration/wait_at_goal_dataset_v4.zarr`
+- `../data/demonstration/lift_qa_v2.zarr`

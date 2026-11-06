@@ -38,8 +38,8 @@
         "ckpt_path": null
     },
     "train": {
-        "data": "~/Repos/robomimic/robomimic/../datasets/square/ph/image_v15.hdf5",
-        "output_dir": "../trained_models/temporaldp/bc/square/ph/image/trained_models",
+        "data": "datasets/square/ph/image_v15.hdf5",
+        "output_dir": "trained_models/temporaldp/bc/square/ph/image/trained_models",
         "normalize_weights_by_ds_size": false,
         "num_data_workers": 0,
         "hdf5_cache_mode": "low_dim",

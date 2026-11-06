@@ -6,15 +6,18 @@ if [[ $# -lt 1 ]]; then
     exit 2
 fi
 
+ldp_checkout="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+demonstration_root="${TC_DP_DEMONSTRATION_ROOT:-$ldp_checkout/../data/demonstration}"
+
 env_name="$1"
 case "$env_name" in
     waitatgoal)
         task_name=waitatgoal_image
-        dataset_path=/mnt/shared/TemporalDiffusionPolicy/data/demonstration/wait_at_goal_dataset_v4.zarr
+        dataset_path="$demonstration_root/wait_at_goal_dataset_v4.zarr"
         ;;
     liftqa)
         task_name=liftqa_image
-        dataset_path=/mnt/shared/TemporalDiffusionPolicy/data/demonstration/lift_qa_v2.zarr
+        dataset_path="$demonstration_root/lift_qa_v2.zarr"
         ;;
     *) echo "Unknown environment: $env_name" >&2; exit 2 ;;
 esac

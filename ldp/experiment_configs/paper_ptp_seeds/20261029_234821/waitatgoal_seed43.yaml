@@ -133,7 +133,7 @@ checkpoint:
   save_last_ckpt: true
   save_last_snapshot: false
 multi_run:
-  run_dir: /home/sydney1/Repos/ldp/data/outputs/waitatgoal_ptp_paper_20261029_234821_seed43
+  run_dir: data/outputs/waitatgoal_ptp_paper_20261029_234821_seed43
   wandb_name_base: waitatgoal_ptp_paper_20261029_234821_seed43
 task:
   name: waitatgoal_image
@@ -173,7 +173,7 @@ task:
     render_size: 144
   dataset:
     _target_: diffusion_policy.dataset.temporal_zarr_image_dataset.TemporalZarrImageDataset
-    zarr_path: /mnt/shared/TemporalDiffusionPolicy/data/demonstration/wait_at_goal_dataset_v4.zarr
+    zarr_path: ../data/demonstration/wait_at_goal_dataset_v4.zarr
     horizon: 32
     n_obs_steps: 16
     subsample_frames: 1

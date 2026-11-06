@@ -15,26 +15,34 @@ Temporal analysis is implemented in `robomimic/scripts/analysis_temporal.py`.
 Specific installation instructions for robomimic can be found [here](https://robomimic.github.io/docs/introduction/installation.html).
 
 ```bash
+# Start from the TC-DP clone root.
 conda create -n robomimic2 python=3.10
 conda activate robomimic2
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+pip install torch==2.9.1+cu128 torchvision==0.24.1+cu128 --index-url https://download.pytorch.org/whl/cu128
 cd robomimic
 pip install -e .
-pip install "robosuite==1.5.1"
+pip install "robosuite==1.5.1" "mujoco==3.5.0" "mink==0.0.5"
 ```
 
 ### Download dataset
+
+Run the following commands from the TC-DP clone's `robomimic/` subfolder.
 Dataset info can be found [here](https://robomimic.github.io/docs/datasets/robomimic_v0.1.html).
 
 ```
-cd robomimic/scripts
-python download_datasets.py --tasks sim --dataset_types ph --hdf5_types raw 
+python robomimic/scripts/download_datasets.py --tasks lift can square --dataset_types ph --hdf5_types raw
 ```
 
 Then postprocess the dataset to get image datasets:
 
 ```
-./extract_obs_from_raw_datasets.sh
+for TASK in lift can square; do
+    python robomimic/scripts/dataset_states_to_obs.py \
+        --dataset "datasets/$TASK/ph/demo_v15.hdf5" \
+        --output_name image_v15.hdf5 --done_mode 2 \
+        --camera_names agentview robot0_eye_in_hand \
+        --camera_height 84 --camera_width 84 --compress
+done
 ```
 
 ### Download TC-DP trained checkpoints and inference datasets
@@ -88,7 +96,7 @@ bc, bc_rnn, diffusion_policy_mod and tc_diffusion_policy_mod.
 Train three independent seeds for every method and task:
 
 ```bash
-conda activate robomimic2 && cd ~/Repos/robomimic
+# Run from the TC-DP clone's robomimic/ subfolder, with its environment active.
 ENV=lift
 SPLIT=ph
 ALGO=tc_diffusion_policy_mod
@@ -128,11 +136,11 @@ deviation across training seeds. Success rates use the same aggregation. All
 rollouts are used; avoid `--rollout_selection_mode best` for this comparison.
 Distribution plots pool rollouts across seeds. Plots are written under
 `robomimic/scripts/analysis_temporal/`, and the LaTeX table is printed to stdout.
- 
+
 ### Evaluations
 Replace with your RUN_ID generated during training.
 ```bash
-conda activate robomimic2 && cd ~/Repos/robomimic
+# Run from the TC-DP clone's robomimic/ subfolder, with its environment active.
 for RUN_ID in 20260715120741 20260716000116 20260716105927; do
     N_ROLLOUTS=100
     ENV=lift

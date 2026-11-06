@@ -40,7 +40,7 @@ restores checkpoints and saved configurations. The shell scripts
 `download_demos.sh`, `download_checkpoints.sh`, and `download_inference.sh`
 select individual categories using the same file list. This avoids pulling older
 experiments into the current comparison. Set local paths in the analysis study
-lists, including the PTP paths in your sibling ldp repository, before analysis.
+lists, including the PTP paths in the ldp/ subfolder, before analysis.
 
 ### Upload the selected paper data
 

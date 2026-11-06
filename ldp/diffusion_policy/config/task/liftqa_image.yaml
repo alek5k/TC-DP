@@ -31,7 +31,7 @@ env_runner:
 
 dataset:
   _target_: diffusion_policy.dataset.temporal_zarr_image_dataset.TemporalZarrImageDataset
-  zarr_path: /mnt/shared/TemporalDiffusionPolicy/data/demonstration/lift_qa_v2.zarr
+  zarr_path: ../data/demonstration/lift_qa_v2.zarr
   horizon: ${horizon}
   n_obs_steps: ${n_obs_steps}
   subsample_frames: 1
