@@ -1,0 +1,3 @@
+# Optional dependencies for robomimic's WaitAtGoal and LiftQA environments.
+# Install with: pip install -r requirements-temporal-envs.txt
+.[temporal-envs]

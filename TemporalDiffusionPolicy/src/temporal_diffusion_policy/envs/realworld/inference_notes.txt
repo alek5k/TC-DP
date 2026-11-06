@@ -1,0 +1,54 @@
+EACH LINE EACH EPISODE
+
+did it wait long enough, did it repeat trajectory, did it succeed in general
+N Y Y
+N Y N
+Y N Y
+N Y Y (didnt even get to goal) - recovered though, did it again
+Y Y Y
+N Y N
+Y (too long) N Y
+N N Y
+Y (too long) N Y
+Y Y (reentered goal immediately) Y
+N Y (regrasped cube after) Y
+Y Y Y
+N Y (regrasp, and restart trajectory) Y
+Y Y (regrasp after goal) Y
+N Y (restart) Y
+Y (too long) Y (restart, rerun) Y
+Y Y(restart) Y
+Y Y (restart) Y
+N N Y
+Y Y (3 regrasp) Y
+N N Y
+Y (too long) N Y
+Y Y Y
+N N Y
+Y Y Y (but went max episodes, got stuck at goal)
+N Y N
+Y (stuck at goal) N N
+Y Y (regrasp twice) Y
+(did i miss one?)
+Y N Y
+N Y (repeat traject 2x) Y
+Y Y Y
+N Y (repeat traj 3x) Y
+
+did it wait long enough, did it repeat trajectory, did it succeed in general
+Y (no dice) Y N
+Y Y Y (but oscillate at goal too)
+N N N (failed at step 1 - went straight up)
+N N Y
+Y Y Y
+N Y Y
+Y Y Y
+Y Y Y
+N Y Y
+N N N
+Y N Y
+Y Y Y
+Y Y Y (but got stuck oscillating at goal)
+N N N
+N N N
+Y (too long) Y (restart trajectory) Y

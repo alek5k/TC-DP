@@ -1,0 +1,798 @@
+{
+  "description": "Main TC-DP paper comparison only; rollout images retained; no ablations or robomimic demonstrations.",
+  "repo_id": "erdrsvhr9/temporally_conditioned_diffusion_policy_robomimic",
+  "files": [
+    {
+      "source": "trained_models/temporaldp/bc/can/ph/image/trained_models/temporaldp_bc_can_ph_image/20260501172542/models/model_epoch_200_image_v15_success_0.96.pth",
+      "remote": "trained_models/temporaldp/bc/can/ph/image/trained_models/temporaldp_bc_can_ph_image/20260501172542/models/model_epoch_200_image_v15_success_0.96.pth",
+      "category": "checkpoint",
+      "environment": "can"
+    },
+    {
+      "source": "trained_models/temporaldp/bc/can/ph/image/trained_models/temporaldp_bc_can_ph_image/20260501232901/models/model_epoch_200_image_v15_success_0.96.pth",
+      "remote": "trained_models/temporaldp/bc/can/ph/image/trained_models/temporaldp_bc_can_ph_image/20260501232901/models/model_epoch_200_image_v15_success_0.96.pth",
+      "category": "checkpoint",
+      "environment": "can"
+    },
+    {
+      "source": "trained_models/temporaldp/bc/can/ph/image/trained_models/temporaldp_bc_can_ph_image/20260502053450/models/model_epoch_600_image_v15_success_0.98.pth",
+      "remote": "trained_models/temporaldp/bc/can/ph/image/trained_models/temporaldp_bc_can_ph_image/20260502053450/models/model_epoch_600_image_v15_success_0.98.pth",
+      "category": "checkpoint",
+      "environment": "can"
+    },
+    {
+      "source": "trained_models/temporaldp/bc_rnn/can/ph/image/trained_models/temporaldp_bc_rnn_can_ph_image/20260501172620/models/model_epoch_560_image_v15_success_1.0.pth",
+      "remote": "trained_models/temporaldp/bc_rnn/can/ph/image/trained_models/temporaldp_bc_rnn_can_ph_image/20260501172620/models/model_epoch_560_image_v15_success_1.0.pth",
+      "category": "checkpoint",
+      "environment": "can"
+    },
+    {
+      "source": "trained_models/temporaldp/bc_rnn/can/ph/image/trained_models/temporaldp_bc_rnn_can_ph_image/20260502001702/models/model_epoch_60_image_v15_success_0.96.pth",
+      "remote": "trained_models/temporaldp/bc_rnn/can/ph/image/trained_models/temporaldp_bc_rnn_can_ph_image/20260502001702/models/model_epoch_60_image_v15_success_0.96.pth",
+      "category": "checkpoint",
+      "environment": "can"
+    },
+    {
+      "source": "trained_models/temporaldp/bc_rnn/can/ph/image/trained_models/temporaldp_bc_rnn_can_ph_image/20260502070933/models/model_epoch_140_image_v15_success_0.96.pth",
+      "remote": "trained_models/temporaldp/bc_rnn/can/ph/image/trained_models/temporaldp_bc_rnn_can_ph_image/20260502070933/models/model_epoch_140_image_v15_success_0.96.pth",
+      "category": "checkpoint",
+      "environment": "can"
+    },
+    {
+      "source": "trained_models/temporaldp/diffusion_policy_mod/can/ph/image/trained_models/temporaldp_diffusion_policy_mod_can_ph_image/20260520123154/models/model_epoch_340_image_v15_success_1.0.pth",
+      "remote": "trained_models/temporaldp/diffusion_policy_mod/can/ph/image/trained_models/temporaldp_diffusion_policy_mod_can_ph_image/20260520123154/models/model_epoch_340_image_v15_success_1.0.pth",
+      "category": "checkpoint",
+      "environment": "can"
+    },
+    {
+      "source": "trained_models/temporaldp/diffusion_policy_mod/can/ph/image/trained_models/temporaldp_diffusion_policy_mod_can_ph_image/20260521002603/models/model_epoch_280_image_v15_success_1.0.pth",
+      "remote": "trained_models/temporaldp/diffusion_policy_mod/can/ph/image/trained_models/temporaldp_diffusion_policy_mod_can_ph_image/20260521002603/models/model_epoch_280_image_v15_success_1.0.pth",
+      "category": "checkpoint",
+      "environment": "can"
+    },
+    {
+      "source": "trained_models/temporaldp/diffusion_policy_mod/can/ph/image/trained_models/temporaldp_diffusion_policy_mod_can_ph_image/20260521115502/models/model_epoch_420_image_v15_success_1.0.pth",
+      "remote": "trained_models/temporaldp/diffusion_policy_mod/can/ph/image/trained_models/temporaldp_diffusion_policy_mod_can_ph_image/20260521115502/models/model_epoch_420_image_v15_success_1.0.pth",
+      "category": "checkpoint",
+      "environment": "can"
+    },
+    {
+      "source": "trained_models/temporaldp/tc_diffusion_policy_mod/can/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_can_ph_image/20260520123242/models/model_epoch_280_image_v15_success_1.0.pth",
+      "remote": "trained_models/temporaldp/tc_diffusion_policy_mod/can/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_can_ph_image/20260520123242/models/model_epoch_280_image_v15_success_1.0.pth",
+      "category": "checkpoint",
+      "environment": "can"
+    },
+    {
+      "source": "trained_models/temporaldp/tc_diffusion_policy_mod/can/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_can_ph_image/20260521002852/models/model_epoch_220_image_v15_success_1.0.pth",
+      "remote": "trained_models/temporaldp/tc_diffusion_policy_mod/can/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_can_ph_image/20260521002852/models/model_epoch_220_image_v15_success_1.0.pth",
+      "category": "checkpoint",
+      "environment": "can"
+    },
+    {
+      "source": "trained_models/temporaldp/tc_diffusion_policy_mod/can/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_can_ph_image/20260521120125/models/model_epoch_220_image_v15_success_1.0.pth",
+      "remote": "trained_models/temporaldp/tc_diffusion_policy_mod/can/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_can_ph_image/20260521120125/models/model_epoch_220_image_v15_success_1.0.pth",
+      "category": "checkpoint",
+      "environment": "can"
+    },
+    {
+      "source": "trained_models/temporaldp/bc/lift/ph/image/trained_models/temporaldp_bc_lift_ph_image/20260715120510/models/model_epoch_140_image_v15_success_1.0.pth",
+      "remote": "trained_models/temporaldp/bc/lift/ph/image/trained_models/temporaldp_bc_lift_ph_image/20260715120510/models/model_epoch_140_image_v15_success_1.0.pth",
+      "category": "checkpoint",
+      "environment": "lift"
+    },
+    {
+      "source": "trained_models/temporaldp/bc/lift/ph/image/trained_models/temporaldp_bc_lift_ph_image/20260715170709/models/model_epoch_260_image_v15_success_1.0.pth",
+      "remote": "trained_models/temporaldp/bc/lift/ph/image/trained_models/temporaldp_bc_lift_ph_image/20260715170709/models/model_epoch_260_image_v15_success_1.0.pth",
+      "category": "checkpoint",
+      "environment": "lift"
+    },
+    {
+      "source": "trained_models/temporaldp/bc/lift/ph/image/trained_models/temporaldp_bc_lift_ph_image/20260715221138/models/model_epoch_60_image_v15_success_1.0.pth",
+      "remote": "trained_models/temporaldp/bc/lift/ph/image/trained_models/temporaldp_bc_lift_ph_image/20260715221138/models/model_epoch_60_image_v15_success_1.0.pth",
+      "category": "checkpoint",
+      "environment": "lift"
+    },
+    {
+      "source": "trained_models/temporaldp/bc_rnn/lift/ph/image/trained_models/temporaldp_bc_rnn_lift_ph_image/20260715120611/models/model_epoch_500_image_v15_success_0.96.pth",
+      "remote": "trained_models/temporaldp/bc_rnn/lift/ph/image/trained_models/temporaldp_bc_rnn_lift_ph_image/20260715120611/models/model_epoch_500_image_v15_success_0.96.pth",
+      "category": "checkpoint",
+      "environment": "lift"
+    },
+    {
+      "source": "trained_models/temporaldp/bc_rnn/lift/ph/image/trained_models/temporaldp_bc_rnn_lift_ph_image/20260715183942/models/model_epoch_220_image_v15_success_0.78.pth",
+      "remote": "trained_models/temporaldp/bc_rnn/lift/ph/image/trained_models/temporaldp_bc_rnn_lift_ph_image/20260715183942/models/model_epoch_220_image_v15_success_0.78.pth",
+      "category": "checkpoint",
+      "environment": "lift"
+    },
+    {
+      "source": "trained_models/temporaldp/bc_rnn/lift/ph/image/trained_models/temporaldp_bc_rnn_lift_ph_image/20260716011945/models/model_epoch_120_image_v15_success_0.9.pth",
+      "remote": "trained_models/temporaldp/bc_rnn/lift/ph/image/trained_models/temporaldp_bc_rnn_lift_ph_image/20260716011945/models/model_epoch_120_image_v15_success_0.9.pth",
+      "category": "checkpoint",
+      "environment": "lift"
+    },
+    {
+      "source": "trained_models/temporaldp/diffusion_policy_mod/lift/ph/image/trained_models/temporaldp_diffusion_policy_mod_lift_ph_image/20260715120713/models/model_epoch_80_image_v15_success_1.0.pth",
+      "remote": "trained_models/temporaldp/diffusion_policy_mod/lift/ph/image/trained_models/temporaldp_diffusion_policy_mod_lift_ph_image/20260715120713/models/model_epoch_80_image_v15_success_1.0.pth",
+      "category": "checkpoint",
+      "environment": "lift"
+    },
+    {
+      "source": "trained_models/temporaldp/diffusion_policy_mod/lift/ph/image/trained_models/temporaldp_diffusion_policy_mod_lift_ph_image/20260715230751/models/model_epoch_120_image_v15_success_1.0.pth",
+      "remote": "trained_models/temporaldp/diffusion_policy_mod/lift/ph/image/trained_models/temporaldp_diffusion_policy_mod_lift_ph_image/20260715230751/models/model_epoch_120_image_v15_success_1.0.pth",
+      "category": "checkpoint",
+      "environment": "lift"
+    },
+    {
+      "source": "trained_models/temporaldp/diffusion_policy_mod/lift/ph/image/trained_models/temporaldp_diffusion_policy_mod_lift_ph_image/20260716084904/models/model_epoch_60_image_v15_success_1.0.pth",
+      "remote": "trained_models/temporaldp/diffusion_policy_mod/lift/ph/image/trained_models/temporaldp_diffusion_policy_mod_lift_ph_image/20260716084904/models/model_epoch_60_image_v15_success_1.0.pth",
+      "category": "checkpoint",
+      "environment": "lift"
+    },
+    {
+      "source": "trained_models/temporaldp/tc_diffusion_policy_mod/lift/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_lift_ph_image/20260715120741/models/model_epoch_100_image_v15_success_1.0.pth",
+      "remote": "trained_models/temporaldp/tc_diffusion_policy_mod/lift/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_lift_ph_image/20260715120741/models/model_epoch_100_image_v15_success_1.0.pth",
+      "category": "checkpoint",
+      "environment": "lift"
+    },
+    {
+      "source": "trained_models/temporaldp/tc_diffusion_policy_mod/lift/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_lift_ph_image/20260716000116/models/model_epoch_140_image_v15_success_1.0.pth",
+      "remote": "trained_models/temporaldp/tc_diffusion_policy_mod/lift/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_lift_ph_image/20260716000116/models/model_epoch_140_image_v15_success_1.0.pth",
+      "category": "checkpoint",
+      "environment": "lift"
+    },
+    {
+      "source": "trained_models/temporaldp/tc_diffusion_policy_mod/lift/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_lift_ph_image/20260716105927/models/model_epoch_120_image_v15_success_1.0.pth",
+      "remote": "trained_models/temporaldp/tc_diffusion_policy_mod/lift/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_lift_ph_image/20260716105927/models/model_epoch_120_image_v15_success_1.0.pth",
+      "category": "checkpoint",
+      "environment": "lift"
+    },
+    {
+      "source": "trained_models/temporaldp/bc/square/ph/image/trained_models/temporaldp_bc_square_ph_image/20260503124246/models/model_epoch_180_image_v15_success_0.66.pth",
+      "remote": "trained_models/temporaldp/bc/square/ph/image/trained_models/temporaldp_bc_square_ph_image/20260503124246/models/model_epoch_180_image_v15_success_0.66.pth",
+      "category": "checkpoint",
+      "environment": "square"
+    },
+    {
+      "source": "trained_models/temporaldp/bc/square/ph/image/trained_models/temporaldp_bc_square_ph_image/20260503211707/models/model_epoch_440_image_v15_success_0.6.pth",
+      "remote": "trained_models/temporaldp/bc/square/ph/image/trained_models/temporaldp_bc_square_ph_image/20260503211707/models/model_epoch_440_image_v15_success_0.6.pth",
+      "category": "checkpoint",
+      "environment": "square"
+    },
+    {
+      "source": "trained_models/temporaldp/bc/square/ph/image/trained_models/temporaldp_bc_square_ph_image/20260504055613/models/model_epoch_360_image_v15_success_0.72.pth",
+      "remote": "trained_models/temporaldp/bc/square/ph/image/trained_models/temporaldp_bc_square_ph_image/20260504055613/models/model_epoch_360_image_v15_success_0.72.pth",
+      "category": "checkpoint",
+      "environment": "square"
+    },
+    {
+      "source": "trained_models/temporaldp/bc_rnn/square/ph/image/trained_models/temporaldp_bc_rnn_square_ph_image/20260504223142/models/model_epoch_440_image_v15_success_0.82.pth",
+      "remote": "trained_models/temporaldp/bc_rnn/square/ph/image/trained_models/temporaldp_bc_rnn_square_ph_image/20260504223142/models/model_epoch_440_image_v15_success_0.82.pth",
+      "category": "checkpoint",
+      "environment": "square"
+    },
+    {
+      "source": "trained_models/temporaldp/bc_rnn/square/ph/image/trained_models/temporaldp_bc_rnn_square_ph_image/20260505074059/models/model_epoch_40_image_v15_success_0.78.pth",
+      "remote": "trained_models/temporaldp/bc_rnn/square/ph/image/trained_models/temporaldp_bc_rnn_square_ph_image/20260505074059/models/model_epoch_40_image_v15_success_0.78.pth",
+      "category": "checkpoint",
+      "environment": "square"
+    },
+    {
+      "source": "trained_models/temporaldp/bc_rnn/square/ph/image/trained_models/temporaldp_bc_rnn_square_ph_image/20260505172234/models/model_epoch_380_image_v15_success_0.8.pth",
+      "remote": "trained_models/temporaldp/bc_rnn/square/ph/image/trained_models/temporaldp_bc_rnn_square_ph_image/20260505172234/models/model_epoch_380_image_v15_success_0.8.pth",
+      "category": "checkpoint",
+      "environment": "square"
+    },
+    {
+      "source": "trained_models/temporaldp/diffusion_policy_mod/square/ph/image/trained_models/temporaldp_diffusion_policy_mod_square_ph_image/20260511191835/models/model_epoch_500_image_v15_success_0.92.pth",
+      "remote": "trained_models/temporaldp/diffusion_policy_mod/square/ph/image/trained_models/temporaldp_diffusion_policy_mod_square_ph_image/20260511191835/models/model_epoch_500_image_v15_success_0.92.pth",
+      "category": "checkpoint",
+      "environment": "square"
+    },
+    {
+      "source": "trained_models/temporaldp/diffusion_policy_mod/square/ph/image/trained_models/temporaldp_diffusion_policy_mod_square_ph_image/20260512121005/models/model_epoch_300_image_v15_success_0.88.pth",
+      "remote": "trained_models/temporaldp/diffusion_policy_mod/square/ph/image/trained_models/temporaldp_diffusion_policy_mod_square_ph_image/20260512121005/models/model_epoch_300_image_v15_success_0.88.pth",
+      "category": "checkpoint",
+      "environment": "square"
+    },
+    {
+      "source": "trained_models/temporaldp/diffusion_policy_mod/square/ph/image/trained_models/temporaldp_diffusion_policy_mod_square_ph_image/20260512121031/models/model_epoch_360_image_v15_success_0.94.pth",
+      "remote": "trained_models/temporaldp/diffusion_policy_mod/square/ph/image/trained_models/temporaldp_diffusion_policy_mod_square_ph_image/20260512121031/models/model_epoch_360_image_v15_success_0.94.pth",
+      "category": "checkpoint",
+      "environment": "square"
+    },
+    {
+      "source": "trained_models/temporaldp/tc_diffusion_policy_mod/square/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_square_ph_image/20260511134003/models/model_epoch_580_image_v15_success_0.92.pth",
+      "remote": "trained_models/temporaldp/tc_diffusion_policy_mod/square/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_square_ph_image/20260511134003/models/model_epoch_580_image_v15_success_0.92.pth",
+      "category": "checkpoint",
+      "environment": "square"
+    },
+    {
+      "source": "trained_models/temporaldp/tc_diffusion_policy_mod/square/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_square_ph_image/20260512121109/models/model_epoch_420_image_v15_success_0.92.pth",
+      "remote": "trained_models/temporaldp/tc_diffusion_policy_mod/square/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_square_ph_image/20260512121109/models/model_epoch_420_image_v15_success_0.92.pth",
+      "category": "checkpoint",
+      "environment": "square"
+    },
+    {
+      "source": "trained_models/temporaldp/tc_diffusion_policy_mod/square/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_square_ph_image/20260512121147/models/model_epoch_420_image_v15_success_0.92.pth",
+      "remote": "trained_models/temporaldp/tc_diffusion_policy_mod/square/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_square_ph_image/20260512121147/models/model_epoch_420_image_v15_success_0.92.pth",
+      "category": "checkpoint",
+      "environment": "square"
+    },
+    {
+      "source": "rollouts/can/ph/bc/20260501172542_model_epoch_200_image_v15_success_0.96.pth.hdf5",
+      "remote": "rollouts/can/ph/bc/20260501172542_model_epoch_200_image_v15_success_0.96.pth.hdf5",
+      "category": "inference",
+      "environment": "can"
+    },
+    {
+      "source": "rollouts/can/ph/bc/20260501232901_model_epoch_200_image_v15_success_0.96.pth.hdf5",
+      "remote": "rollouts/can/ph/bc/20260501232901_model_epoch_200_image_v15_success_0.96.pth.hdf5",
+      "category": "inference",
+      "environment": "can"
+    },
+    {
+      "source": "rollouts/can/ph/bc/20260502053450_model_epoch_600_image_v15_success_0.98.pth.hdf5",
+      "remote": "rollouts/can/ph/bc/20260502053450_model_epoch_600_image_v15_success_0.98.pth.hdf5",
+      "category": "inference",
+      "environment": "can"
+    },
+    {
+      "source": "rollouts/can/ph/bc_rnn/20260501172620_model_epoch_560_image_v15_success_1.0.pth.hdf5",
+      "remote": "rollouts/can/ph/bc_rnn/20260501172620_model_epoch_560_image_v15_success_1.0.pth.hdf5",
+      "category": "inference",
+      "environment": "can"
+    },
+    {
+      "source": "rollouts/can/ph/bc_rnn/20260502001702_model_epoch_60_image_v15_success_0.96.pth.hdf5",
+      "remote": "rollouts/can/ph/bc_rnn/20260502001702_model_epoch_60_image_v15_success_0.96.pth.hdf5",
+      "category": "inference",
+      "environment": "can"
+    },
+    {
+      "source": "rollouts/can/ph/bc_rnn/20260502070933_model_epoch_140_image_v15_success_0.96.pth.hdf5",
+      "remote": "rollouts/can/ph/bc_rnn/20260502070933_model_epoch_140_image_v15_success_0.96.pth.hdf5",
+      "category": "inference",
+      "environment": "can"
+    },
+    {
+      "source": "rollouts/can/ph/diffusion_policy_mod/20260520123154_model_epoch_340_image_v15_success_1.0.pth.hdf5",
+      "remote": "rollouts/can/ph/diffusion_policy_mod/20260520123154_model_epoch_340_image_v15_success_1.0.pth.hdf5",
+      "category": "inference",
+      "environment": "can"
+    },
+    {
+      "source": "rollouts/can/ph/diffusion_policy_mod/20260521002603_model_epoch_280_image_v15_success_1.0.pth.hdf5",
+      "remote": "rollouts/can/ph/diffusion_policy_mod/20260521002603_model_epoch_280_image_v15_success_1.0.pth.hdf5",
+      "category": "inference",
+      "environment": "can"
+    },
+    {
+      "source": "rollouts/can/ph/diffusion_policy_mod/20260521115502_model_epoch_420_image_v15_success_1.0.pth.hdf5",
+      "remote": "rollouts/can/ph/diffusion_policy_mod/20260521115502_model_epoch_420_image_v15_success_1.0.pth.hdf5",
+      "category": "inference",
+      "environment": "can"
+    },
+    {
+      "source": "rollouts/can/ph/tc_diffusion_policy_mod/20260520123242_model_epoch_280_image_v15_success_1.0.pth.hdf5",
+      "remote": "rollouts/can/ph/tc_diffusion_policy_mod/20260520123242_model_epoch_280_image_v15_success_1.0.pth.hdf5",
+      "category": "inference",
+      "environment": "can"
+    },
+    {
+      "source": "rollouts/can/ph/tc_diffusion_policy_mod/20260521002852_model_epoch_220_image_v15_success_1.0.pth.hdf5",
+      "remote": "rollouts/can/ph/tc_diffusion_policy_mod/20260521002852_model_epoch_220_image_v15_success_1.0.pth.hdf5",
+      "category": "inference",
+      "environment": "can"
+    },
+    {
+      "source": "rollouts/can/ph/tc_diffusion_policy_mod/20260521120125_model_epoch_220_image_v15_success_1.0.pth.hdf5",
+      "remote": "rollouts/can/ph/tc_diffusion_policy_mod/20260521120125_model_epoch_220_image_v15_success_1.0.pth.hdf5",
+      "category": "inference",
+      "environment": "can"
+    },
+    {
+      "source": "rollouts/lift/ph/bc/20260715120510_model_epoch_140_image_v15_success_1.0.pth.hdf5",
+      "remote": "rollouts/lift/ph/bc/20260715120510_model_epoch_140_image_v15_success_1.0.pth.hdf5",
+      "category": "inference",
+      "environment": "lift"
+    },
+    {
+      "source": "rollouts/lift/ph/bc/20260715170709_model_epoch_260_image_v15_success_1.0.pth.hdf5",
+      "remote": "rollouts/lift/ph/bc/20260715170709_model_epoch_260_image_v15_success_1.0.pth.hdf5",
+      "category": "inference",
+      "environment": "lift"
+    },
+    {
+      "source": "rollouts/lift/ph/bc/20260715221138_model_epoch_60_image_v15_success_1.0.pth.hdf5",
+      "remote": "rollouts/lift/ph/bc/20260715221138_model_epoch_60_image_v15_success_1.0.pth.hdf5",
+      "category": "inference",
+      "environment": "lift"
+    },
+    {
+      "source": "rollouts/lift/ph/bc_rnn/20260715120611_model_epoch_500_image_v15_success_0.96.pth.hdf5",
+      "remote": "rollouts/lift/ph/bc_rnn/20260715120611_model_epoch_500_image_v15_success_0.96.pth.hdf5",
+      "category": "inference",
+      "environment": "lift"
+    },
+    {
+      "source": "rollouts/lift/ph/bc_rnn/20260715183942_model_epoch_220_image_v15_success_0.78.pth.hdf5",
+      "remote": "rollouts/lift/ph/bc_rnn/20260715183942_model_epoch_220_image_v15_success_0.78.pth.hdf5",
+      "category": "inference",
+      "environment": "lift"
+    },
+    {
+      "source": "rollouts/lift/ph/bc_rnn/20260716011945_model_epoch_120_image_v15_success_0.9.pth.hdf5",
+      "remote": "rollouts/lift/ph/bc_rnn/20260716011945_model_epoch_120_image_v15_success_0.9.pth.hdf5",
+      "category": "inference",
+      "environment": "lift"
+    },
+    {
+      "source": "rollouts/lift/ph/diffusion_policy_mod/20260715120713_model_epoch_80_image_v15_success_1.0.pth.hdf5",
+      "remote": "rollouts/lift/ph/diffusion_policy_mod/20260715120713_model_epoch_80_image_v15_success_1.0.pth.hdf5",
+      "category": "inference",
+      "environment": "lift"
+    },
+    {
+      "source": "rollouts/lift/ph/diffusion_policy_mod/20260715230751_model_epoch_120_image_v15_success_1.0.pth.hdf5",
+      "remote": "rollouts/lift/ph/diffusion_policy_mod/20260715230751_model_epoch_120_image_v15_success_1.0.pth.hdf5",
+      "category": "inference",
+      "environment": "lift"
+    },
+    {
+      "source": "rollouts/lift/ph/diffusion_policy_mod/20260716084904_model_epoch_60_image_v15_success_1.0.pth.hdf5",
+      "remote": "rollouts/lift/ph/diffusion_policy_mod/20260716084904_model_epoch_60_image_v15_success_1.0.pth.hdf5",
+      "category": "inference",
+      "environment": "lift"
+    },
+    {
+      "source": "rollouts/lift/ph/tc_diffusion_policy_mod/20260715120741_model_epoch_100_image_v15_success_1.0.pth.hdf5",
+      "remote": "rollouts/lift/ph/tc_diffusion_policy_mod/20260715120741_model_epoch_100_image_v15_success_1.0.pth.hdf5",
+      "category": "inference",
+      "environment": "lift"
+    },
+    {
+      "source": "rollouts/lift/ph/tc_diffusion_policy_mod/20260716000116_model_epoch_140_image_v15_success_1.0.pth.hdf5",
+      "remote": "rollouts/lift/ph/tc_diffusion_policy_mod/20260716000116_model_epoch_140_image_v15_success_1.0.pth.hdf5",
+      "category": "inference",
+      "environment": "lift"
+    },
+    {
+      "source": "rollouts/lift/ph/tc_diffusion_policy_mod/20260716105927_model_epoch_120_image_v15_success_1.0.pth.hdf5",
+      "remote": "rollouts/lift/ph/tc_diffusion_policy_mod/20260716105927_model_epoch_120_image_v15_success_1.0.pth.hdf5",
+      "category": "inference",
+      "environment": "lift"
+    },
+    {
+      "source": "rollouts/square/ph/bc/20260503124246_model_epoch_180_image_v15_success_0.66.pth.hdf5",
+      "remote": "rollouts/square/ph/bc/20260503124246_model_epoch_180_image_v15_success_0.66.pth.hdf5",
+      "category": "inference",
+      "environment": "square"
+    },
+    {
+      "source": "rollouts/square/ph/bc/20260503211707_model_epoch_440_image_v15_success_0.6.pth.hdf5",
+      "remote": "rollouts/square/ph/bc/20260503211707_model_epoch_440_image_v15_success_0.6.pth.hdf5",
+      "category": "inference",
+      "environment": "square"
+    },
+    {
+      "source": "rollouts/square/ph/bc/20260504055613_model_epoch_360_image_v15_success_0.72.pth.hdf5",
+      "remote": "rollouts/square/ph/bc/20260504055613_model_epoch_360_image_v15_success_0.72.pth.hdf5",
+      "category": "inference",
+      "environment": "square"
+    },
+    {
+      "source": "rollouts/square/ph/bc_rnn/20260504223142_model_epoch_440_image_v15_success_0.82.pth.hdf5",
+      "remote": "rollouts/square/ph/bc_rnn/20260504223142_model_epoch_440_image_v15_success_0.82.pth.hdf5",
+      "category": "inference",
+      "environment": "square"
+    },
+    {
+      "source": "rollouts/square/ph/bc_rnn/20260505074059_model_epoch_40_image_v15_success_0.78.pth.hdf5",
+      "remote": "rollouts/square/ph/bc_rnn/20260505074059_model_epoch_40_image_v15_success_0.78.pth.hdf5",
+      "category": "inference",
+      "environment": "square"
+    },
+    {
+      "source": "rollouts/square/ph/bc_rnn/20260505172234_model_epoch_380_image_v15_success_0.8.pth.hdf5",
+      "remote": "rollouts/square/ph/bc_rnn/20260505172234_model_epoch_380_image_v15_success_0.8.pth.hdf5",
+      "category": "inference",
+      "environment": "square"
+    },
+    {
+      "source": "rollouts/square/ph/diffusion_policy_mod/20260511191835_model_epoch_500_image_v15_success_0.92.pth.hdf5",
+      "remote": "rollouts/square/ph/diffusion_policy_mod/20260511191835_model_epoch_500_image_v15_success_0.92.pth.hdf5",
+      "category": "inference",
+      "environment": "square"
+    },
+    {
+      "source": "rollouts/square/ph/diffusion_policy_mod/20260512121005_model_epoch_300_image_v15_success_0.88.pth.hdf5",
+      "remote": "rollouts/square/ph/diffusion_policy_mod/20260512121005_model_epoch_300_image_v15_success_0.88.pth.hdf5",
+      "category": "inference",
+      "environment": "square"
+    },
+    {
+      "source": "rollouts/square/ph/diffusion_policy_mod/20260512121031_model_epoch_360_image_v15_success_0.94.pth.hdf5",
+      "remote": "rollouts/square/ph/diffusion_policy_mod/20260512121031_model_epoch_360_image_v15_success_0.94.pth.hdf5",
+      "category": "inference",
+      "environment": "square"
+    },
+    {
+      "source": "rollouts/square/ph/tc_diffusion_policy_mod/20260511134003_model_epoch_580_image_v15_success_0.92.pth.hdf5",
+      "remote": "rollouts/square/ph/tc_diffusion_policy_mod/20260511134003_model_epoch_580_image_v15_success_0.92.pth.hdf5",
+      "category": "inference",
+      "environment": "square"
+    },
+    {
+      "source": "rollouts/square/ph/tc_diffusion_policy_mod/20260512121109_model_epoch_420_image_v15_success_0.92.pth.hdf5",
+      "remote": "rollouts/square/ph/tc_diffusion_policy_mod/20260512121109_model_epoch_420_image_v15_success_0.92.pth.hdf5",
+      "category": "inference",
+      "environment": "square"
+    },
+    {
+      "source": "rollouts/square/ph/tc_diffusion_policy_mod/20260512121147_model_epoch_420_image_v15_success_0.92.pth.hdf5",
+      "remote": "rollouts/square/ph/tc_diffusion_policy_mod/20260512121147_model_epoch_420_image_v15_success_0.92.pth.hdf5",
+      "category": "inference",
+      "environment": "square"
+    },
+    {
+      "source": "trained_models/temporaldp/bc/can/ph/image/trained_models/temporaldp_bc_can_ph_image/20260501172542/config.json",
+      "remote": "trained_models/temporaldp/bc/can/ph/image/trained_models/temporaldp_bc_can_ph_image/20260501172542/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/bc/can/ph/image/trained_models/temporaldp_bc_can_ph_image/20260501232901/config.json",
+      "remote": "trained_models/temporaldp/bc/can/ph/image/trained_models/temporaldp_bc_can_ph_image/20260501232901/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/bc/can/ph/image/trained_models/temporaldp_bc_can_ph_image/20260502053450/config.json",
+      "remote": "trained_models/temporaldp/bc/can/ph/image/trained_models/temporaldp_bc_can_ph_image/20260502053450/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/bc/lift/ph/image/trained_models/temporaldp_bc_lift_ph_image/20260715120510/config.json",
+      "remote": "trained_models/temporaldp/bc/lift/ph/image/trained_models/temporaldp_bc_lift_ph_image/20260715120510/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/bc/lift/ph/image/trained_models/temporaldp_bc_lift_ph_image/20260715170709/config.json",
+      "remote": "trained_models/temporaldp/bc/lift/ph/image/trained_models/temporaldp_bc_lift_ph_image/20260715170709/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/bc/lift/ph/image/trained_models/temporaldp_bc_lift_ph_image/20260715221138/config.json",
+      "remote": "trained_models/temporaldp/bc/lift/ph/image/trained_models/temporaldp_bc_lift_ph_image/20260715221138/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/bc/square/ph/image/trained_models/temporaldp_bc_square_ph_image/20260503124246/config.json",
+      "remote": "trained_models/temporaldp/bc/square/ph/image/trained_models/temporaldp_bc_square_ph_image/20260503124246/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/bc/square/ph/image/trained_models/temporaldp_bc_square_ph_image/20260503211707/config.json",
+      "remote": "trained_models/temporaldp/bc/square/ph/image/trained_models/temporaldp_bc_square_ph_image/20260503211707/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/bc/square/ph/image/trained_models/temporaldp_bc_square_ph_image/20260504055613/config.json",
+      "remote": "trained_models/temporaldp/bc/square/ph/image/trained_models/temporaldp_bc_square_ph_image/20260504055613/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/bc_rnn/can/ph/image/trained_models/temporaldp_bc_rnn_can_ph_image/20260501172620/config.json",
+      "remote": "trained_models/temporaldp/bc_rnn/can/ph/image/trained_models/temporaldp_bc_rnn_can_ph_image/20260501172620/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/bc_rnn/can/ph/image/trained_models/temporaldp_bc_rnn_can_ph_image/20260502001702/config.json",
+      "remote": "trained_models/temporaldp/bc_rnn/can/ph/image/trained_models/temporaldp_bc_rnn_can_ph_image/20260502001702/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/bc_rnn/can/ph/image/trained_models/temporaldp_bc_rnn_can_ph_image/20260502070933/config.json",
+      "remote": "trained_models/temporaldp/bc_rnn/can/ph/image/trained_models/temporaldp_bc_rnn_can_ph_image/20260502070933/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/bc_rnn/lift/ph/image/trained_models/temporaldp_bc_rnn_lift_ph_image/20260715120611/config.json",
+      "remote": "trained_models/temporaldp/bc_rnn/lift/ph/image/trained_models/temporaldp_bc_rnn_lift_ph_image/20260715120611/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/bc_rnn/lift/ph/image/trained_models/temporaldp_bc_rnn_lift_ph_image/20260715183942/config.json",
+      "remote": "trained_models/temporaldp/bc_rnn/lift/ph/image/trained_models/temporaldp_bc_rnn_lift_ph_image/20260715183942/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/bc_rnn/lift/ph/image/trained_models/temporaldp_bc_rnn_lift_ph_image/20260716011945/config.json",
+      "remote": "trained_models/temporaldp/bc_rnn/lift/ph/image/trained_models/temporaldp_bc_rnn_lift_ph_image/20260716011945/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/bc_rnn/square/ph/image/trained_models/temporaldp_bc_rnn_square_ph_image/20260504223142/config.json",
+      "remote": "trained_models/temporaldp/bc_rnn/square/ph/image/trained_models/temporaldp_bc_rnn_square_ph_image/20260504223142/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/bc_rnn/square/ph/image/trained_models/temporaldp_bc_rnn_square_ph_image/20260505074059/config.json",
+      "remote": "trained_models/temporaldp/bc_rnn/square/ph/image/trained_models/temporaldp_bc_rnn_square_ph_image/20260505074059/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/bc_rnn/square/ph/image/trained_models/temporaldp_bc_rnn_square_ph_image/20260505172234/config.json",
+      "remote": "trained_models/temporaldp/bc_rnn/square/ph/image/trained_models/temporaldp_bc_rnn_square_ph_image/20260505172234/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/diffusion_policy_mod/can/ph/image/trained_models/temporaldp_diffusion_policy_mod_can_ph_image/20260520123154/config.json",
+      "remote": "trained_models/temporaldp/diffusion_policy_mod/can/ph/image/trained_models/temporaldp_diffusion_policy_mod_can_ph_image/20260520123154/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/diffusion_policy_mod/can/ph/image/trained_models/temporaldp_diffusion_policy_mod_can_ph_image/20260521002603/config.json",
+      "remote": "trained_models/temporaldp/diffusion_policy_mod/can/ph/image/trained_models/temporaldp_diffusion_policy_mod_can_ph_image/20260521002603/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/diffusion_policy_mod/can/ph/image/trained_models/temporaldp_diffusion_policy_mod_can_ph_image/20260521115502/config.json",
+      "remote": "trained_models/temporaldp/diffusion_policy_mod/can/ph/image/trained_models/temporaldp_diffusion_policy_mod_can_ph_image/20260521115502/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/diffusion_policy_mod/lift/ph/image/trained_models/temporaldp_diffusion_policy_mod_lift_ph_image/20260715120713/config.json",
+      "remote": "trained_models/temporaldp/diffusion_policy_mod/lift/ph/image/trained_models/temporaldp_diffusion_policy_mod_lift_ph_image/20260715120713/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/diffusion_policy_mod/lift/ph/image/trained_models/temporaldp_diffusion_policy_mod_lift_ph_image/20260715230751/config.json",
+      "remote": "trained_models/temporaldp/diffusion_policy_mod/lift/ph/image/trained_models/temporaldp_diffusion_policy_mod_lift_ph_image/20260715230751/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/diffusion_policy_mod/lift/ph/image/trained_models/temporaldp_diffusion_policy_mod_lift_ph_image/20260716084904/config.json",
+      "remote": "trained_models/temporaldp/diffusion_policy_mod/lift/ph/image/trained_models/temporaldp_diffusion_policy_mod_lift_ph_image/20260716084904/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/diffusion_policy_mod/square/ph/image/trained_models/temporaldp_diffusion_policy_mod_square_ph_image/20260511191835/config.json",
+      "remote": "trained_models/temporaldp/diffusion_policy_mod/square/ph/image/trained_models/temporaldp_diffusion_policy_mod_square_ph_image/20260511191835/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/diffusion_policy_mod/square/ph/image/trained_models/temporaldp_diffusion_policy_mod_square_ph_image/20260512121005/config.json",
+      "remote": "trained_models/temporaldp/diffusion_policy_mod/square/ph/image/trained_models/temporaldp_diffusion_policy_mod_square_ph_image/20260512121005/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/diffusion_policy_mod/square/ph/image/trained_models/temporaldp_diffusion_policy_mod_square_ph_image/20260512121031/config.json",
+      "remote": "trained_models/temporaldp/diffusion_policy_mod/square/ph/image/trained_models/temporaldp_diffusion_policy_mod_square_ph_image/20260512121031/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/tc_diffusion_policy_mod/can/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_can_ph_image/20260520123242/config.json",
+      "remote": "trained_models/temporaldp/tc_diffusion_policy_mod/can/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_can_ph_image/20260520123242/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/tc_diffusion_policy_mod/can/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_can_ph_image/20260521002852/config.json",
+      "remote": "trained_models/temporaldp/tc_diffusion_policy_mod/can/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_can_ph_image/20260521002852/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/tc_diffusion_policy_mod/can/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_can_ph_image/20260521120125/config.json",
+      "remote": "trained_models/temporaldp/tc_diffusion_policy_mod/can/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_can_ph_image/20260521120125/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/tc_diffusion_policy_mod/lift/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_lift_ph_image/20260715120741/config.json",
+      "remote": "trained_models/temporaldp/tc_diffusion_policy_mod/lift/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_lift_ph_image/20260715120741/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/tc_diffusion_policy_mod/lift/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_lift_ph_image/20260716000116/config.json",
+      "remote": "trained_models/temporaldp/tc_diffusion_policy_mod/lift/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_lift_ph_image/20260716000116/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/tc_diffusion_policy_mod/lift/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_lift_ph_image/20260716105927/config.json",
+      "remote": "trained_models/temporaldp/tc_diffusion_policy_mod/lift/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_lift_ph_image/20260716105927/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/tc_diffusion_policy_mod/square/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_square_ph_image/20260511134003/config.json",
+      "remote": "trained_models/temporaldp/tc_diffusion_policy_mod/square/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_square_ph_image/20260511134003/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/tc_diffusion_policy_mod/square/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_square_ph_image/20260512121109/config.json",
+      "remote": "trained_models/temporaldp/tc_diffusion_policy_mod/square/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_square_ph_image/20260512121109/config.json",
+      "category": "config"
+    },
+    {
+      "source": "trained_models/temporaldp/tc_diffusion_policy_mod/square/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_square_ph_image/20260512121147/config.json",
+      "remote": "trained_models/temporaldp/tc_diffusion_policy_mod/square/ph/image/trained_models/temporaldp_tc_diffusion_policy_mod_square_ph_image/20260512121147/config.json",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/can/ph/bc/20260501172542_model_epoch_200_image_v15_success_0.96.pth_info.txt",
+      "remote": "rollouts/can/ph/bc/20260501172542_model_epoch_200_image_v15_success_0.96.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/can/ph/bc/20260501232901_model_epoch_200_image_v15_success_0.96.pth_info.txt",
+      "remote": "rollouts/can/ph/bc/20260501232901_model_epoch_200_image_v15_success_0.96.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/can/ph/bc/20260502053450_model_epoch_600_image_v15_success_0.98.pth_info.txt",
+      "remote": "rollouts/can/ph/bc/20260502053450_model_epoch_600_image_v15_success_0.98.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/can/ph/bc_rnn/20260501172620_model_epoch_560_image_v15_success_1.0.pth_info.txt",
+      "remote": "rollouts/can/ph/bc_rnn/20260501172620_model_epoch_560_image_v15_success_1.0.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/can/ph/bc_rnn/20260502001702_model_epoch_60_image_v15_success_0.96.pth_info.txt",
+      "remote": "rollouts/can/ph/bc_rnn/20260502001702_model_epoch_60_image_v15_success_0.96.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/can/ph/bc_rnn/20260502070933_model_epoch_140_image_v15_success_0.96.pth_info.txt",
+      "remote": "rollouts/can/ph/bc_rnn/20260502070933_model_epoch_140_image_v15_success_0.96.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/can/ph/diffusion_policy_mod/20260520123154_model_epoch_340_image_v15_success_1.0.pth_info.txt",
+      "remote": "rollouts/can/ph/diffusion_policy_mod/20260520123154_model_epoch_340_image_v15_success_1.0.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/can/ph/diffusion_policy_mod/20260521002603_model_epoch_280_image_v15_success_1.0.pth_info.txt",
+      "remote": "rollouts/can/ph/diffusion_policy_mod/20260521002603_model_epoch_280_image_v15_success_1.0.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/can/ph/diffusion_policy_mod/20260521115502_model_epoch_420_image_v15_success_1.0.pth_info.txt",
+      "remote": "rollouts/can/ph/diffusion_policy_mod/20260521115502_model_epoch_420_image_v15_success_1.0.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/can/ph/tc_diffusion_policy_mod/20260520123242_model_epoch_280_image_v15_success_1.0.pth_info.txt",
+      "remote": "rollouts/can/ph/tc_diffusion_policy_mod/20260520123242_model_epoch_280_image_v15_success_1.0.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/can/ph/tc_diffusion_policy_mod/20260521002852_model_epoch_220_image_v15_success_1.0.pth_info.txt",
+      "remote": "rollouts/can/ph/tc_diffusion_policy_mod/20260521002852_model_epoch_220_image_v15_success_1.0.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/can/ph/tc_diffusion_policy_mod/20260521120125_model_epoch_220_image_v15_success_1.0.pth_info.txt",
+      "remote": "rollouts/can/ph/tc_diffusion_policy_mod/20260521120125_model_epoch_220_image_v15_success_1.0.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/lift/ph/bc/20260715120510_model_epoch_140_image_v15_success_1.0.pth_info.txt",
+      "remote": "rollouts/lift/ph/bc/20260715120510_model_epoch_140_image_v15_success_1.0.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/lift/ph/bc/20260715170709_model_epoch_260_image_v15_success_1.0.pth_info.txt",
+      "remote": "rollouts/lift/ph/bc/20260715170709_model_epoch_260_image_v15_success_1.0.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/lift/ph/bc/20260715221138_model_epoch_60_image_v15_success_1.0.pth_info.txt",
+      "remote": "rollouts/lift/ph/bc/20260715221138_model_epoch_60_image_v15_success_1.0.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/lift/ph/bc_rnn/20260715120611_model_epoch_500_image_v15_success_0.96.pth_info.txt",
+      "remote": "rollouts/lift/ph/bc_rnn/20260715120611_model_epoch_500_image_v15_success_0.96.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/lift/ph/bc_rnn/20260715183942_model_epoch_220_image_v15_success_0.78.pth_info.txt",
+      "remote": "rollouts/lift/ph/bc_rnn/20260715183942_model_epoch_220_image_v15_success_0.78.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/lift/ph/bc_rnn/20260716011945_model_epoch_120_image_v15_success_0.9.pth_info.txt",
+      "remote": "rollouts/lift/ph/bc_rnn/20260716011945_model_epoch_120_image_v15_success_0.9.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/lift/ph/diffusion_policy_mod/20260715120713_model_epoch_80_image_v15_success_1.0.pth_info.txt",
+      "remote": "rollouts/lift/ph/diffusion_policy_mod/20260715120713_model_epoch_80_image_v15_success_1.0.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/lift/ph/diffusion_policy_mod/20260715230751_model_epoch_120_image_v15_success_1.0.pth_info.txt",
+      "remote": "rollouts/lift/ph/diffusion_policy_mod/20260715230751_model_epoch_120_image_v15_success_1.0.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/lift/ph/diffusion_policy_mod/20260716084904_model_epoch_60_image_v15_success_1.0.pth_info.txt",
+      "remote": "rollouts/lift/ph/diffusion_policy_mod/20260716084904_model_epoch_60_image_v15_success_1.0.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/lift/ph/tc_diffusion_policy_mod/20260715120741_model_epoch_100_image_v15_success_1.0.pth_info.txt",
+      "remote": "rollouts/lift/ph/tc_diffusion_policy_mod/20260715120741_model_epoch_100_image_v15_success_1.0.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/lift/ph/tc_diffusion_policy_mod/20260716000116_model_epoch_140_image_v15_success_1.0.pth_info.txt",
+      "remote": "rollouts/lift/ph/tc_diffusion_policy_mod/20260716000116_model_epoch_140_image_v15_success_1.0.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/lift/ph/tc_diffusion_policy_mod/20260716105927_model_epoch_120_image_v15_success_1.0.pth_info.txt",
+      "remote": "rollouts/lift/ph/tc_diffusion_policy_mod/20260716105927_model_epoch_120_image_v15_success_1.0.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/square/ph/bc/20260503124246_model_epoch_180_image_v15_success_0.66.pth_info.txt",
+      "remote": "rollouts/square/ph/bc/20260503124246_model_epoch_180_image_v15_success_0.66.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/square/ph/bc/20260503211707_model_epoch_440_image_v15_success_0.6.pth_info.txt",
+      "remote": "rollouts/square/ph/bc/20260503211707_model_epoch_440_image_v15_success_0.6.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/square/ph/bc/20260504055613_model_epoch_360_image_v15_success_0.72.pth_info.txt",
+      "remote": "rollouts/square/ph/bc/20260504055613_model_epoch_360_image_v15_success_0.72.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/square/ph/bc_rnn/20260504223142_model_epoch_440_image_v15_success_0.82.pth_info.txt",
+      "remote": "rollouts/square/ph/bc_rnn/20260504223142_model_epoch_440_image_v15_success_0.82.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/square/ph/bc_rnn/20260505074059_model_epoch_40_image_v15_success_0.78.pth_info.txt",
+      "remote": "rollouts/square/ph/bc_rnn/20260505074059_model_epoch_40_image_v15_success_0.78.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/square/ph/bc_rnn/20260505172234_model_epoch_380_image_v15_success_0.8.pth_info.txt",
+      "remote": "rollouts/square/ph/bc_rnn/20260505172234_model_epoch_380_image_v15_success_0.8.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/square/ph/diffusion_policy_mod/20260511191835_model_epoch_500_image_v15_success_0.92.pth_info.txt",
+      "remote": "rollouts/square/ph/diffusion_policy_mod/20260511191835_model_epoch_500_image_v15_success_0.92.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/square/ph/diffusion_policy_mod/20260512121005_model_epoch_300_image_v15_success_0.88.pth_info.txt",
+      "remote": "rollouts/square/ph/diffusion_policy_mod/20260512121005_model_epoch_300_image_v15_success_0.88.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/square/ph/diffusion_policy_mod/20260512121031_model_epoch_360_image_v15_success_0.94.pth_info.txt",
+      "remote": "rollouts/square/ph/diffusion_policy_mod/20260512121031_model_epoch_360_image_v15_success_0.94.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/square/ph/tc_diffusion_policy_mod/20260511134003_model_epoch_580_image_v15_success_0.92.pth_info.txt",
+      "remote": "rollouts/square/ph/tc_diffusion_policy_mod/20260511134003_model_epoch_580_image_v15_success_0.92.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/square/ph/tc_diffusion_policy_mod/20260512121109_model_epoch_420_image_v15_success_0.92.pth_info.txt",
+      "remote": "rollouts/square/ph/tc_diffusion_policy_mod/20260512121109_model_epoch_420_image_v15_success_0.92.pth_info.txt",
+      "category": "config"
+    },
+    {
+      "source": "rollouts/square/ph/tc_diffusion_policy_mod/20260512121147_model_epoch_420_image_v15_success_0.92.pth_info.txt",
+      "remote": "rollouts/square/ph/tc_diffusion_policy_mod/20260512121147_model_epoch_420_image_v15_success_0.92.pth_info.txt",
+      "category": "config"
+    }
+  ]
+}
