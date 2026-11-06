@@ -1,6 +1,6 @@
-# Temporal Conditioning for Diffusion-Based Robotic Imitation Learning
+# Mitigating Temporal Failures in Diffusion-Based Robotic Imitation Learning
 
-This repository root contains the TemporalDiffusionPolicy implementation. Run the commands below from this root with the project environment active. Paths in command examples are relative to this root. The other implementations are in the `robomimic/` and `ldp/` subfolders and are listed at the end; each has its own dependencies and installation instructions.
+This repository root contains the Temporal Conditioning Diffusion Policy (TC-DP) implementation. Run the commands below from this root with the project environment active. Paths in command examples are relative to this root. The other implementations are in the `robomimic/` and `ldp/` subfolders and are listed at the end; each has its own dependencies and installation instructions.
 
 A diffusion policy implementation with temporal encoding mechanisms for robotic manipulation and navigation tasks. This repository implements various temporal conditioning techniques to improve policy performance on tasks requiring waiting or long-horizon temporal reasoning. Implementation of the temporal encodings can be found in `temporal_encodings.py`.
 
