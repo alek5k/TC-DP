@@ -1,0 +1,20 @@
+
+# Night Time Dataset:
+# DP        python inference.py --checkpoint_path=data/checkpoints/LiftQA-Real_20260324_201551
+# DP + PIP  python inference.py --checkpoint_path=data/checkpoints/LiftQA-Real_20260324_201551 --use_pause_induced_perturbation=True
+# SiP       python inference.py --checkpoint_path=data/checkpoints/20260325_002720 --use_sinusoidal_progress_encoding=True
+# SaP       python inference.py --checkpoint_path=data/checkpoints/20260325_001032 --use_saturating_progress_encoding=True
+# ID        python inference.py --checkpoint_path=data/checkpoints/20260325_001015 --use_idleness_encoding=True
+# ID + SaP  python inference.py --checkpoint_path=data/checkpoints/LiftQA-Real_20260325_002721 --use_idleness_encoding=True --use_saturating_progress_encoding=True
+# ID + SiP  python inference.py --checkpoint_path=data/checkpoints/LiftQA-Real_20260324_204116 --use_idleness_encoding=True --use_sinusoidal_progress_encoding=True
+
+# Day Time Dataset:
+# DP        python inference.py --checkpoint_path=data/checkpoints/20260325_133722 
+# DP + PIP  python inference.py --checkpoint_path=data/checkpoints/20260325_133722 --use_pause_induced_perturbation=True
+# ID + SaP  python inference.py --checkpoint_path=data/checkpoints/20260325_140702 --use_idleness_encoding=True --use_saturating_progress_encoding=True
+# ID + SiP  python inference.py --checkpoint_path=data/checkpoints/20260325_133813 --use_idleness_encoding=True --use_sinusoidal_progress_encoding=True
+
+# Additional helpful
+# ID        python inference.py --checkpoint_path=data/checkpoints/20260325_140754 --use_idleness_encoding=True
+# SaP       python inference.py --checkpoint_path=data/checkpoints/20260325_145736 --use_saturating_progress_encoding=True
+# SiP       python inference.py --checkpoint_path=data/checkpoints/20260325_145801 --use_sinusoidal_progress_encoding=True

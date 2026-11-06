@@ -1,0 +1,51 @@
+{
+  "environment": "WaitAtGoal",
+  "study": "tc_dp_paper",
+  "runs": [
+    {
+      "path": "data/demonstration/wait_at_goal_dataset_v4.zarr",
+      "label": "Demo",
+      "dataset_type": "Demo"
+    },
+    {
+      "path": "data/inference/WaitAtGoal_ckpt20260114_180054_.zarr",
+      "label": "DP Baseline",
+      "dataset_type": "Baseline",
+      "table_method": "DP"
+    },
+    {
+      "path": "/home/sydney1/Repos/ldp/data/inference/waitatgoal_ptp_20260730_162141-r2/rollouts.zarr",
+      "label": "PTP Baseline",
+      "dataset_type": "Inference",
+      "table_method": "PTP"
+    },
+    {
+      "path": "data/inference/WaitAtGoal_ckpt20260114_180054_PIP__eps0.03_win20_sig0.99.zarr",
+      "label": "PIP Baseline",
+      "dataset_type": "Baseline",
+      "table_method": "DP+PIP"
+    },
+    {
+      "path": "data/inference/WaitAtGoal_ckpt20260114_180104_+ID.zarr",
+      "dataset_type": "Inference"
+    },
+    {
+      "path": "data/inference/WaitAtGoal_ckpt20260121_140503_+SaP.zarr",
+      "dataset_type": "Inference"
+    },
+    {
+      "path": "data/inference/WaitAtGoal_ckpt20260115_045503_+SiP32.zarr",
+      "dataset_type": "Inference"
+    },
+    {
+      "path": "data/inference/WaitAtGoal_ckpt20260114_193114_+ID_+SaP.zarr",
+      "dataset_type": "Inference",
+      "table_method": "TC-DP (ID+SaP)"
+    },
+    {
+      "path": "data/inference/WaitAtGoal_ckpt20260115_183507_+ID_+SiP32.zarr",
+      "dataset_type": "Inference",
+      "table_method": "TC-DP (ID+SiP)"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "environment": "WaitAtGoal",
+  "study": "pip_sweep",
+  "runs": [
+    {
+      "path": "data/demonstration/wait_at_goal_dataset_v4.zarr",
+      "label": "Demo",
+      "dataset_type": "Demo"
+    },
+    {
+      "path": "data/inference/WaitAtGoal_ckpt20260114_180054_.zarr",
+      "label": "DP Baseline",
+      "dataset_type": "Baseline"
+    },
+    {
+      "path": "data/inference/WaitAtGoal_ckpt20260114_180054_PIP__eps0.03_win20_sig0.99.zarr",
+      "label": "PIP Baseline",
+      "dataset_type": "Baseline"
+    },
+    {
+      "path": "/home/sydney1/Repos/ldp/data/inference/waitatgoal_ptp_20260730_162141-r2/rollouts.zarr",
+      "label": "PTP",
+      "dataset_type": "Inference",
+      "table_method": "PTP"
+    },
+    {
+      "path": "data/inference_extended/WaitAtGoal_ckpt20260114_180054_PIP__eps0.001_win40_sig0.6.zarr",
+      "dataset_type": "Inference"
+    },
+    {
+      "path": "data/inference_extended/WaitAtGoal_ckpt20260114_180054_PIP__eps0.06_win30_sig0.99.zarr",
+      "dataset_type": "Inference"
+    },
+    {
+      "path": "data/inference_extended/WaitAtGoal_ckpt20260114_180054_PIP__eps0.001_win40_sig0.99.zarr",
+      "dataset_type": "Inference"
+    },
+    {
+      "path": "data/inference_extended/WaitAtGoal_ckpt20260114_180054_PIP__eps0.001_win40_sig0.9.zarr",
+      "dataset_type": "Inference"
+    },
+    {
+      "path": "data/inference_extended/WaitAtGoal_ckpt20260114_180054_PIP__eps0.001_win40_sig0.8.zarr",
+      "dataset_type": "Inference"
+    },
+    {
+      "path": "data/inference_extended/WaitAtGoal_ckpt20260114_180054_PIP__eps0.03_win30_sig0.9.zarr",
+      "dataset_type": "Inference"
+    },
+    {
+      "path": "data/inference_extended/WaitAtGoal_ckpt20260114_180054_PIP__eps0.01_win20_sig0.6.zarr",
+      "dataset_type": "Inference"
+    },
+    {
+      "path": "data/inference_extended/WaitAtGoal_ckpt20260114_180054_PIP__eps0.001_win20_sig0.8.zarr",
+      "dataset_type": "Inference"
+    },
+    {
+      "path": "data/inference_extended/WaitAtGoal_ckpt20260114_180054_PIP__eps0.01_win40_sig0.6.zarr",
+      "dataset_type": "Inference"
+    },
+    {
+      "path": "data/inference_extended/WaitAtGoal_ckpt20260114_180054_PIP__eps0.06_win30_sig0.6.zarr",
+      "dataset_type": "Inference"
+    },
+    {
+      "path": "data/inference_extended/WaitAtGoal_ckpt20260114_180054_PIP__eps0.01_win30_sig0.99.zarr",
+      "dataset_type": "Inference"
+    },
+    {
+      "path": "data/inference_extended/WaitAtGoal_ckpt20260114_180054_PIP__eps0.06_win8_sig0.6.zarr",
+      "dataset_type": "Inference"
+    },
+    {
+      "path": "data/inference_extended/WaitAtGoal_ckpt20260114_180054_PIP__eps0.01_win8_sig0.9.zarr",
+      "dataset_type": "Inference"
+    },
+    {
+      "path": "data/inference_extended/WaitAtGoal_ckpt20260114_180054_PIP__eps0.03_win20_sig0.95.zarr",
+      "dataset_type": "Inference"
+    },
+    {
+      "path": "data/inference_extended/WaitAtGoal_ckpt20260114_180054_PIP__eps0.03_win60_sig0.9.zarr",
+      "dataset_type": "Inference"
+    },
+    {
+      "path": "data/inference_extended/WaitAtGoal_ckpt20260114_180054_PIP__eps0.03_win20_sig0.6.zarr",
+      "dataset_type": "Inference"
+    }
+  ]
+}

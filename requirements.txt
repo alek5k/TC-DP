@@ -1,0 +1,24 @@
+pygame==2.1.2
+diffusers==0.18.2
+draccus==0.11.5
+numpy>=2.0.0
+zarr<3
+gym==0.26.2
+pymunk==6.2.1
+shapely==1.8.4
+opencv-python==4.13.0.92
+scipy==1.15.1
+scikit-image==0.19.3
+scikit-video==1.1.11
+scikit-learn==1.6.1
+robosuite @ git+https://github.com/ARISE-Initiative/robosuite.git@95743f6687ad7394ccb6e865fa4e1b99114e580d # need github version where mink optional, cant use pypi due to mink requiring numpy<2
+hidapi==0.14.0
+h5py==3.12.1
+wandb==0.13.3
+imageio==2.22.0
+matplotlib==3.10.0
+tqdm==4.64.1
+numcodecs==0.10.2
+huggingface-hub==0.25.2
+einops==0.8.1
+python-dotenv==1.2.1

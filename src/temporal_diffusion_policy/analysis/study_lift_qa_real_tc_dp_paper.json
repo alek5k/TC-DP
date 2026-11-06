@@ -1,0 +1,33 @@
+{
+  "environment": "LiftQA-Real",
+  "study": "tc_dp_paper",
+  "runs": [
+    {
+      "path": "data/demonstration/lift_qa_realenv_v1.zarr",
+      "label": "Demo",
+      "dataset_type": "Demo"
+    },
+    {
+      "path": "data/inference/LiftQA-Real_ckpt20260324_201551_.zarr",
+      "label": "DP Baseline",
+      "dataset_type": "Baseline",
+      "table_method": "DP"
+    },
+    {
+      "path": "data/inference/LiftQA-Real_ckpt20260324_201551_PIP.zarr",
+      "label": "PIP Baseline",
+      "dataset_type": "Baseline",
+      "table_method": "DP+PIP"
+    },
+    {
+      "path": "data/inference/LiftQA-Real_ckpt20260325_002721_+ID_+SaP.zarr",
+      "dataset_type": "Inference",
+      "table_method": "TC-DP (ID+SaP)"
+    },
+    {
+      "path": "data/inference/LiftQA-Real_ckpt20260324_204116_+ID_+SiP128.zarr",
+      "dataset_type": "Inference",
+      "table_method": "TC-DP (ID+SiP)"
+    }
+  ]
+}

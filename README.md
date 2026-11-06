@@ -1,129 +1,385 @@
-# TC-DP supplementary materials
+# Temporal Conditioning for Diffusion-Based Robotic Imitation Learning
 
-This bundle accompanies Mitigating Temporal Failures in Diffusion-Based Robotic
-Imitation Learning. This bundle contains three separate repositories, each
-with its own installation instructions and dependencies. Install them in separate
-environments.
+This repository root contains the TemporalDiffusionPolicy implementation. Run the commands below from this root with the project environment active. Paths in command examples are relative to this root. The other implementations are in the `robomimic/` and `ldp/` subfolders and are listed at the end; each has its own dependencies and installation instructions.
 
-The three code folders are at the root of this repository. Paths below are relative
-to the relevant repository unless stated otherwise.
+A diffusion policy implementation with temporal encoding mechanisms for robotic manipulation and navigation tasks. This repository implements various temporal conditioning techniques to improve policy performance on tasks requiring waiting or long-horizon temporal reasoning. Implementation of the temporal encodings can be found in `temporal_encodings.py`.
+
+![Temporally Conditioned Diffusion Policy Pipeline](docs/Architecture.png)
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [TC-DP paper reproduction](tcdp_paper/README.md)
+- [Workflows](#workflows)
+  - [Downloading Datasets](#downloading-datasets)
+  - [Data Collection](#data-collection)
+  - [Dataset Requirements](#dataset-requirements)
+  - [Training](#training)
+  - [Inference](#inference)
+  - [Analysis](#analysis)
+
+---
+## Installation
+Tested on Ubuntu 22.04.5 LTS. Note that `libmamba` solver was used for conda.
+```bash
+# Create conda environment
+conda create -n temporaldiffpolicy python=3.10 -y
+conda activate temporaldiffpolicy
+
+# Install a CUDA-compatible PyTorch build.
+# CUDA 12.8 is required for NVIDIA RTX 5090 (sm_120) GPUs.
+pip install torch==2.9.1+cu128 torchvision==0.24.1+cu128 --index-url https://download.pytorch.org/whl/cu128
+
+# Install the project and its standard simulation/training dependencies
+pip install .
+
+# Optional integrations
+pip install ".[robosuite]"      # Robosuite and SpaceMouse support
+pip install ".[realworld]"      # audio and keyboard support for real hardware
+```
+
+For multi-GPU hosts, select a GPU before running training or inference:
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python src/temporal_diffusion_policy/training.py ...
+# or
+CUDA_VISIBLE_DEVICES=0 python src/temporal_diffusion_policy/inference.py ...
+```
+
+Verify CUDA is available with `python -c "import torch; print(torch.cuda.is_available())"`.
+
+---
+## Quick Start
+
+### Interactive train-and-infer workflow
+
+Run the launcher to either train-and-evaluate a model or run the waiting-time
+analysis. The training workflow selects a compatible dataset from
+`data/demonstration/` (or `data/demonstrations/`) and prompts for the training
+and temporal-conditioning settings. It trains with W&B enabled, reads W&B's
+generated run name (for example, `red-lake-403`) from the final checkpoint,
+and passes that name to `inference.py` with matching encoding settings. The
+analysis workflow prompts for `WaitAtGoal`, `LiftQA`, or `LiftQA-Real`.
+
+```bash
+python src/temporal_diffusion_policy/experiment_cli.py
+```
+
+```bash
+# 1. Download pre-collected demonstration data (or collect your own)
+./scripts/download_quickstart_demo_dataset.sh
+./scripts/unzip_datasets.sh
+
+# 2. Train a model with temporal encodings
+python src/temporal_diffusion_policy/training.py \
+--dataset_path data/demonstration/wait_at_goal_dataset_v4.zarr \
+--override_checkpoint_name wait_at_goal_quickstart \
+--use_idleness_encoding True \
+--use_sinusoidal_progress_encoding True \
+--use_wandb False
+
+# 3. Run inference
+python src/temporal_diffusion_policy/inference.py \
+--checkpoint_path data/checkpoints/wait_at_goal_quickstart \
+--use_idleness_encoding True \
+--use_sinusoidal_progress_encoding True \
+--num_episodes 200
+
+# 4. Explore this run's results
+python src/temporal_diffusion_policy/analysis/waittime.py
+```
+
+To reproduce the paper's three-seed comparison, follow the
+[TC-DP paper guide](tcdp_paper/README.md).
+---
+## Workflows
+
+### Downloading Datasets
+
+Pre-collected demonstrations, selected checkpoints and inference results are
+available on [Hugging Face](https://huggingface.co/datasets/erdrsvhr9/temporally_conditioned_diffusion_policy).
+See the [TC-DP paper guide](tcdp_paper/README.md) for the current paper selection,
+download and upload commands, and image formats.
+
+**Dataset Structure**:
+```
+data/
+├── demonstration/                             # Human teleoperation demonstrations
+│   ├── wait_at_goal_dataset_v4.zarr
+│   ├── lift_qa_realenv_v1.zarr
+│   └── lift_qa_v2.zarr
+│
+├── checkpoints/                               # Pre-trained model checkpoints
+│   └── [various experimental configurations]
+│
+├── inference/                                 # Inference/evaluation results
+│   └── [generated rollout datasets]
+│
+└── inference_extended/                        # Ablation results
+    └── [generated rollout datasets]
+```
+
+**Available Demonstration Datasets**:
+- `wait_at_goal_dataset_v4.zarr`: Navigation task with waiting requirement (200 episodes)
+- `lift_qa_v2.zarr`: Visual quality assurance inspection manipulation task (203 episodes)
+- `lift_qa_realenv_v1.zarr`: Visual quality assurance inspection manipulation task - real world (51 episodes)
+
+---
+
+### Data Collection
+
+There are two types of data collection depending on your environment:
+
+#### WaitAtGoal: Warehouse Pickup and Delivery
+A 2D navigation environments built on pygame:
+<p align="center">
+<img src="docs/EnvA.png" width="200">
+</p>
+
+```bash
+python src/temporal_diffusion_policy/data_collection_pygame.py \
+    --env_name WaitAtGoal \
+    --output data/demonstration/my_wait_at_goal_dataset.zarr \
+    --render_size 144 \
+    --control_hz 10 \
+    --episodes 200 \
+    --seed 0
+```
+
+**Control**: Use mouse for teleoperation.
+
+
+#### LiftQA: Robotic Visual Quality Inspection
+A robotic manipulation task built on [Robosuite](https://github.com/ARISE-Initiative/robosuite):
+<p align="center">
+<img src="docs/EnvB.png" width="200">
+</p>
+
+```bash
+# first run spacemouse server
+python src/temporal_diffusion_policy/envs/robosuite/spacemouse_udp_server.py
+
+# then start data collection
+python src/temporal_diffusion_policy/data_collection_robosuite.py \
+    --dataset_path data/demonstration/lift_qa_v2.zarr \
+    --episodes 200 \
+    --control_hz 10 \
+    --constrain_motion True \
+    --realtime True \
+    --realtime_speed 2.0 \
+    --seed 0
+```
+
+**Control**: Requires SpaceMouse 3D controller (via UDP client - see `envs/robot/spacemouse_udp_server.py` and `envs/robot/spacemouse_udp_client.py`).
+
+**Key Parameters**:
+- `constrain_motion`: Limits motion to horizontal plane
+- `realtime_speed`: Speed multiplier (2.0 = 2x faster than real-time to speed up data collection)
+
+#### LiftQA-Real: Robotic Visual Quality Inspection (Real World)
+A real life robotic manipulation task using a UR10e and Robotiq 2F-85 gripper.
+<p align="center">
+<img src="docs/EnvReal.jpg" width="200">
+</p>
+
+```bash
+# then start data collection
+python src/temporal_diffusion_policy/data_collection_realenv.py \
+    --dataset_path data/demonstration/lift_qa_realenv_2.zarr \
+    --episodes 200
+```
+---
+
+### Dataset Requirements
+Collecting data using one of the `data_collection_x.py` scripts will ensure the correct dataset format. If you wish to bring your own zarr dataset, ensure the following features exist. Assume N is number of total steps in the dataset.
+
+- `episode_ends` in `root['meta']` - created automatically by `replay_buffer.py`
+- `agent_pose`: *(N, D)* - D is pose dimension (env dependent)
+- `full_image`: *(N,3,H,W)* - 3 for channels, H,W for height and width
+- `agent_velocity`: *(N,)* if idleness encoding is used
+- `step_count`: *(N,)*
+- `action`: *(N,  D)* - D is action dimension (env dependent)
+- `reward`: *(N,)*
+- `done`: *(N,)*
+- `wait_time`: *(N,)* - (optional) - nice to have for analysis
+- `wait_times_each_visit`*(N,6)* - (optional) - 6 is max goal visits. nice to have for analysis
+
+
+---
+### Training
+
+Train a diffusion policy model with optional temporal encodings:
+
+```bash
+python src/temporal_diffusion_policy/training.py \
+    --dataset_path data/demonstration/wait_at_goal_dataset_v4.zarr \
+    --batch_size 512 \
+    --num_epochs 200 \
+    --lr 1e-4 \
+    --pred_horizon 16 \
+    --obs_horizon 2 \
+    --action_horizon 8 \
+    --use_wandb True
+```
+
+Batch size 512 with default horizon parameters has been tested on an Nvidia 5090.
+
+**With Temporal Encodings**:
+
+```bash
+# Idleness Encoding (ID)
+python src/temporal_diffusion_policy/training.py \
+    --dataset_path <path> \
+    --use_idleness_encoding True
+
+# Saturating Progress Encoding (SaP)
+python src/temporal_diffusion_policy/training.py \
+    --dataset_path <path> \
+    --use_saturating_progress_encoding True
+
+# Sinusoidal Progress Encoding (SiP)
+python src/temporal_diffusion_policy/training.py \
+    --dataset_path <path> \
+    --use_sinusoidal_progress_encoding True \
+    --sinusoidal_progress_encoding_dim 32
+
+# ID + SaP
+python src/temporal_diffusion_policy/training.py \
+    --dataset_path <path> \
+    --use_idleness_encoding True \
+    --use_saturating_progress_encoding True
+
+# ID + SiP
+python src/temporal_diffusion_policy/training.py \
+    --dataset_path <path> \
+    --use_idleness_encoding True \
+    --use_sinusoidal_progress_encoding True \
+    --sinusoidal_progress_encoding_dim 32
+
+```
+
+**Checkpoints**: Saved to `data/checkpoints/<timestamp>/` with configuration and statistics.
+
+---
+
+### Inference
+
+Run inference/evaluation with a trained model:
+
+```bash
+# Note: change env_name to 'LiftQA' for manipulation task
+# Diffusion Policy baseline
+python src/temporal_diffusion_policy/inference.py \
+    --checkpoint_path <path> \
+    --env_name WaitAtGoal
+
+# Idleness Encoding (ID)
+python src/temporal_diffusion_policy/inference.py \
+    --checkpoint_path <path> \
+    --env_name WaitAtGoal \
+    --use_idleness_encoding True
+
+# Saturating Progress Encoding (SaP)
+python src/temporal_diffusion_policy/inference.py \
+    --checkpoint_path <path> \
+    --env_name WaitAtGoal \
+    --use_saturating_progress_encoding True
+
+# Sinusoidal Progress Encoding (SiP)
+# important note: encoding_dim must match the trained checkpoint
+python src/temporal_diffusion_policy/inference.py \
+    --checkpoint_path <path> \
+    --env_name WaitAtGoal \
+    --use_sinusoidal_progress_encoding True \
+    --sinusoidal_progress_encoding_dim 32
+
+# ID + SaP
+python src/temporal_diffusion_policy/inference.py \
+    --checkpoint_path <path> \
+    --env_name WaitAtGoal \
+    --use_idleness_encoding True \
+    --use_saturating_progress_encoding True
+
+# ID + SiP
+# important note: encoding_dim must match the trained checkpoint
+python src/temporal_diffusion_policy/inference.py \
+    --checkpoint_path <path> \
+    --env_name WaitAtGoal \
+    --use_idleness_encoding True \
+    --use_sinusoidal_progress_encoding True \
+    --sinusoidal_progress_encoding_dim 32
+```
+
+
+**With Pause-Induced Perturbation (PIP)**:
+PIP is an inference-time technique.
+
+```bash
+# Note: change env_name to 'LiftQA' for manipulation task
+python src/temporal_diffusion_policy/inference.py \
+    --checkpoint_path <path> \
+    --env_name WaitAtGoal \
+    --use_pause_induced_perturbation True \
+    --pip_sigma 0.99 \
+    --pip_window_size 20 \
+    --pip_epsilon 0.03
+```
+
+**Output**: Inference results saved to `data/inference/<env>_<checkpoint>_<config>.zarr`
+
+---
+
+### Analysis
+
+Analyze waiting behavior and generate plots/tables from inference datasets:
+
+```bash
+python src/temporal_diffusion_policy/analysis/waittime.py
+```
+
+The script analyzes predefined dataset configurations (baseline, main experiments, extended experiments) and generates:
+
+- **Wait time distributions**: Histograms and density plots
+- **Success rate tables**: LaTeX tables with statistical metrics
+- **Wasserstein distances**: Quantitative comparison to demonstration data
+- **Episode metrics**: Success rates, wait times, trajectory analysis
+
+**Customization**: Edit the `analysis/study_*.json` files, or use “Edit analysis
+study configuration” in the Experiment CLI. Each file represents one
+environment/study combination and lists its dataset runs.
+
+**Output**: Plots and tables are saved to `outputs/analysis/waittime/`.
+
+For the paper's three-seed tables and figures, real-world success criterion and
+appendix ablation table, see the [TC-DP paper guide](tcdp_paper/README.md).
+
+---
+
+## Citation
+
+If you use this code in your research, please cite:
+
+```bibtex
+@article{xxxxx,
+  title={Temporal Conditioning for Diffusion-Based Robotic Imitation Learning},
+  author={XXXX},
+  journal={XXXX},
+  year={2026}
+}
+```
+
+---
+
+## Acknowledgments
+
+- Built using elements from [Diffusion Policy](https://github.com/real-stanford/diffusion_policy).
+- PIP baseline implemented from [Chen et al., 2025](https://arxiv.org/pdf/2508.15669) paper.
+
+---
 
 ## Repositories
 
-### [TemporalDiffusionPolicy](TemporalDiffusionPolicy/)
-
-TC-DP and DP/PIP baselines; WaitAtGoal, LiftQA, and LiftQA-Real environments;
-temporal analysis. Installation and usage: README.md
-
-### [robomimic](robomimic/)
-
-TC-DP and baseline experiments on the Robomimic benchmark.
-Installation and usage: README_TC-DP.md
-
-### [ldp](ldp/)
-
-Past-Token Prediction (PTP) baseline, including WaitAtGoal and LiftQA integration.
-Installation and usage: README.md and TEMPORAL_ENVS.md
-
-## Video
-
-TC-DP vs. DP - LiftQA-Real - Real World Env - Failure Modes.mp4, in the supplementary ZIP,
-compares TC-DP and DP failure modes in the real-world environment.
-
-## Implementation
-
-In TemporalDiffusionPolicy, temporal encodings are in
-src/temporal_diffusion_policy/temporal_encodings.py.
-The same package contains training.py, inference.py, and the task environments
-under envs/, including the distinct simulated and real-world LiftQA environments.
-
-In robomimic, the implementation uses robomimic/utils/temporal_encodings.py
-and TemporalEncodingWrapper in robomimic/envs/wrappers.py.
-Experiment configurations are in robomimic/exps/temporaldp/.
-
-For PTP in ldp, start with the three-training-seed protocol in TEMPORAL_ENVS.md
-and the saved configurations in experiment_configs/paper_ptp_seeds/20261029_234821/.
-Use eval_temporal_policy.sh to evaluate each selected checkpoint. The task
-configurations are
-diffusion_policy/config/task/waitatgoal_image.yaml and
-diffusion_policy/config/task/liftqa_image.yaml.
-
-## Data and analysis
-
-Datasets, trained checkpoints, recorded rollouts, and generated analysis outputs
-are excluded. The repository READMEs contain download instructions and explain
-the expected data layouts. Set local dataset and checkpoint paths before training,
-evaluation, or analysis; some configurations retain paths from the original
-working environment.
-
-The current main-paper data selection contains three custom demonstration
-datasets, 63 selected checkpoints, and 70 rollout datasets including images.
-Can, Lift and Square demonstrations are obtained from robomimic upstream and
-are not duplicated. Ablations are outside this data upload selection.
-
-Custom environments and PTP:
-https://huggingface.co/datasets/erdrsvhr9/temporally_conditioned_diffusion_policy
-Robomimic checkpoints and rollouts:
-https://huggingface.co/datasets/erdrsvhr9/temporally_conditioned_diffusion_policy_robomimic
-
-Download from each repository root using its exact paper selection:
-TemporalDiffusionPolicy:
-```bash
-python src/temporal_diffusion_policy/tools/dataset_upload.py --download
-```
-robomimic and ldp (run separately in each repository):
-```bash
-python dataset_upload.py --download
-```
-
-These commands extract Zarr archives into their expected directories. PTP
-uses the demonstrations downloaded into TemporalDiffusionPolicy. Adjust local
-paths in the analysis study lists and configurations before running reports.
-The main paper tables and plots use this selection; the separate appendix
-ablation table requires its additional ablation data.
-
-Compacted inference datasets store retained image arrays as uint8 pixels in
-the range 0-255. LiftQA keeps full_image and omits the redundant agentview_image
-field; LiftQA-Real retains full_image_raw at its original resolution. Convert
-uint8 policy images to float32 and divide by 255 before model use. The image
-array's _uint8_compaction attributes record its original dtype and the divisor
-needed to restore its original pixel scale. Any rounded fractional images are
-marked explicitly in those attributes. The table and distribution analyses
-read non-image arrays and do not require image conversion.
-
-For the ambiguity-environment results and distribution plots in
-TemporalDiffusionPolicy, see src/temporal_diffusion_policy/analysis/report.py and
-the adjacent STUDIES.md, reports/, and study_*.json files. The default paper_main
-report uses mean and sample standard deviation across three training seeds for
-WaitAtGoal and LiftQA, alongside single-policy LiftQA-Real results. The separate
-appendix ablation table retains the original single-training-seed evaluations.
-Once the dependencies and analysis datasets are installed, run these from the
-TemporalDiffusionPolicy repository root:
-
-```bash
-python -m temporal_diffusion_policy.analysis.report
-python -m temporal_diffusion_policy.analysis.report --figures
-python -m temporal_diffusion_policy.analysis.ablation_table
-```
-
-Use the default paper_main report for the current three-seed comparison.
-For simulation-only results, use --config main_multiseed; the environment-specific
-presets are --config waitatgoal_multiseed and --config liftqa_multiseed.
-Review the study lists and set dataset paths to your local copies before running
-analysis. Add --check-inputs to validate the listed datasets without generating
-outputs. The default report writes
-outputs/analysis/reports/paper_main.tex and a companion paper_main.json file.
-
-In robomimic, result analysis is implemented in
-robomimic/scripts/analysis_temporal.py. Combined-run analysis reports means and
-sample standard deviations for episode-duration distance and success rate across
-training-seed rollout files. From the robomimic repository root, run:
-
-```bash
-python -m robomimic.scripts.analysis_temporal --task_names '["can", "lift", "square"]' --dataset_split ph --rollout_sampling_mode all --rollout_selection_mode combine
-```
-
-Use one rollout file for each of the three training seeds per method and task.
-The expected directory layout is documented in README_TC-DP.md.
-
-Training and evaluation commands are documented in each repository's README.
+- TemporalDiffusionPolicy (this repository root): TC-DP, DP and PIP for WaitAtGoal, LiftQA and LiftQA-Real. See the [paper reproduction guide](tcdp_paper/README.md) for the three-seed comparison, data and analysis.
+- [robomimic](robomimic/README_TC-DP.md): TC-DP and baselines on the Robomimic benchmark.
+- [ldp](ldp/README.md): Past-Token Prediction (PTP) baseline; see [TEMPORAL_ENVS.md](ldp/TEMPORAL_ENVS.md) for the temporal environments and paper protocol.
