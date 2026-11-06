@@ -1,6 +1,6 @@
 # Mitigating Temporal Failures in Diffusion-Based Robotic Imitation Learning
 
-This repository root contains the Temporal Conditioning Diffusion Policy (TC-DP) implementation. Run the commands below from this root with the project environment active. Paths in command examples are relative to this root. The other implementations are in the `robomimic/` and `ldp/` subfolders and are listed at the end; each has its own dependencies and installation instructions.
+This repository root contains the Temporally Conditioned Diffusion Policy (TC-DP) implementation. Run the commands below from this root with the project environment active. Paths in command examples are relative to this root. The other implementations are in the `robomimic/` and `ldp/` subfolders and are listed at the end; each has its own dependencies and installation instructions.
 
 A diffusion policy implementation with temporal encoding mechanisms for robotic manipulation and navigation tasks. This repository implements various temporal conditioning techniques to improve policy performance on tasks requiring waiting or long-horizon temporal reasoning. Implementation of the temporal encodings can be found in `temporal_encodings.py`.
 
@@ -42,9 +42,9 @@ pip install ".[realworld]"      # audio and keyboard support for real hardware
 For multi-GPU hosts, select a GPU before running training or inference:
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 python src/temporal_diffusion_policy/training.py ...
+CUDA_VISIBLE_DEVICES=0 python training.py ...
 # or
-CUDA_VISIBLE_DEVICES=0 python src/temporal_diffusion_policy/inference.py ...
+CUDA_VISIBLE_DEVICES=0 python inference.py ...
 ```
 
 Verify CUDA is available with `python -c "import torch; print(torch.cuda.is_available())"`.
@@ -63,7 +63,7 @@ and passes that name to `inference.py` with matching encoding settings. The
 analysis workflow prompts for `WaitAtGoal`, `LiftQA`, or `LiftQA-Real`.
 
 ```bash
-python src/temporal_diffusion_policy/experiment_cli.py
+python experiment_cli.py
 ```
 
 ```bash
@@ -71,8 +71,10 @@ python src/temporal_diffusion_policy/experiment_cli.py
 ./scripts/download_quickstart_demo_dataset.sh
 ./scripts/unzip_datasets.sh
 
+cd src/temporal_diffusion_policy
+
 # 2. Train a model with temporal encodings
-python src/temporal_diffusion_policy/training.py \
+python training.py \
 --dataset_path data/demonstration/wait_at_goal_dataset_v4.zarr \
 --override_checkpoint_name wait_at_goal_quickstart \
 --use_idleness_encoding True \
@@ -80,14 +82,14 @@ python src/temporal_diffusion_policy/training.py \
 --use_wandb False
 
 # 3. Run inference
-python src/temporal_diffusion_policy/inference.py \
+python inference.py \
 --checkpoint_path data/checkpoints/wait_at_goal_quickstart \
 --use_idleness_encoding True \
 --use_sinusoidal_progress_encoding True \
 --num_episodes 200
 
 # 4. Explore this run's results
-python src/temporal_diffusion_policy/analysis/waittime.py
+python analysis/waittime.py
 ```
 
 To reproduce the paper's three-seed comparison, follow the
@@ -138,7 +140,7 @@ A 2D navigation environments built on pygame:
 </p>
 
 ```bash
-python src/temporal_diffusion_policy/data_collection_pygame.py \
+python data_collection_pygame.py \
     --env_name WaitAtGoal \
     --output data/demonstration/my_wait_at_goal_dataset.zarr \
     --render_size 144 \
@@ -158,10 +160,10 @@ A robotic manipulation task built on [Robosuite](https://github.com/ARISE-Initia
 
 ```bash
 # first run spacemouse server
-python src/temporal_diffusion_policy/envs/robosuite/spacemouse_udp_server.py
+python envs/robosuite/spacemouse_udp_server.py
 
 # then start data collection
-python src/temporal_diffusion_policy/data_collection_robosuite.py \
+python data_collection_robosuite.py \
     --dataset_path data/demonstration/lift_qa_v2.zarr \
     --episodes 200 \
     --control_hz 10 \
@@ -185,7 +187,7 @@ A real life robotic manipulation task using a UR10e and Robotiq 2F-85 gripper.
 
 ```bash
 # then start data collection
-python src/temporal_diffusion_policy/data_collection_realenv.py \
+python data_collection_realenv.py \
     --dataset_path data/demonstration/lift_qa_realenv_2.zarr \
     --episodes 200
 ```
@@ -212,7 +214,9 @@ Collecting data using one of the `data_collection_x.py` scripts will ensure the 
 Train a diffusion policy model with optional temporal encodings:
 
 ```bash
-python src/temporal_diffusion_policy/training.py \
+cd src/temporal_diffusion_policy
+
+python training.py \
     --dataset_path data/demonstration/wait_at_goal_dataset_v4.zarr \
     --batch_size 512 \
     --num_epochs 200 \
@@ -228,30 +232,32 @@ Batch size 512 with default horizon parameters has been tested on an Nvidia 5090
 **With Temporal Encodings**:
 
 ```bash
+cd src/temporal_diffusion_policy
+
 # Idleness Encoding (ID)
-python src/temporal_diffusion_policy/training.py \
+python training.py \
     --dataset_path <path> \
     --use_idleness_encoding True
 
 # Saturating Progress Encoding (SaP)
-python src/temporal_diffusion_policy/training.py \
+python training.py \
     --dataset_path <path> \
     --use_saturating_progress_encoding True
 
 # Sinusoidal Progress Encoding (SiP)
-python src/temporal_diffusion_policy/training.py \
+python training.py \
     --dataset_path <path> \
     --use_sinusoidal_progress_encoding True \
     --sinusoidal_progress_encoding_dim 32
 
 # ID + SaP
-python src/temporal_diffusion_policy/training.py \
+python training.py \
     --dataset_path <path> \
     --use_idleness_encoding True \
     --use_saturating_progress_encoding True
 
 # ID + SiP
-python src/temporal_diffusion_policy/training.py \
+python training.py \
     --dataset_path <path> \
     --use_idleness_encoding True \
     --use_sinusoidal_progress_encoding True \
@@ -268,34 +274,36 @@ python src/temporal_diffusion_policy/training.py \
 Run inference/evaluation with a trained model:
 
 ```bash
+cd src/temporal_diffusion_policy
+
 # Note: change env_name to 'LiftQA' for manipulation task
 # Diffusion Policy baseline
-python src/temporal_diffusion_policy/inference.py \
+python inference.py \
     --checkpoint_path <path> \
     --env_name WaitAtGoal
 
 # Idleness Encoding (ID)
-python src/temporal_diffusion_policy/inference.py \
+python inference.py \
     --checkpoint_path <path> \
     --env_name WaitAtGoal \
     --use_idleness_encoding True
 
 # Saturating Progress Encoding (SaP)
-python src/temporal_diffusion_policy/inference.py \
+python inference.py \
     --checkpoint_path <path> \
     --env_name WaitAtGoal \
     --use_saturating_progress_encoding True
 
 # Sinusoidal Progress Encoding (SiP)
 # important note: encoding_dim must match the trained checkpoint
-python src/temporal_diffusion_policy/inference.py \
+python inference.py \
     --checkpoint_path <path> \
     --env_name WaitAtGoal \
     --use_sinusoidal_progress_encoding True \
     --sinusoidal_progress_encoding_dim 32
 
 # ID + SaP
-python src/temporal_diffusion_policy/inference.py \
+python inference.py \
     --checkpoint_path <path> \
     --env_name WaitAtGoal \
     --use_idleness_encoding True \
@@ -303,7 +311,7 @@ python src/temporal_diffusion_policy/inference.py \
 
 # ID + SiP
 # important note: encoding_dim must match the trained checkpoint
-python src/temporal_diffusion_policy/inference.py \
+python inference.py \
     --checkpoint_path <path> \
     --env_name WaitAtGoal \
     --use_idleness_encoding True \
@@ -316,8 +324,10 @@ python src/temporal_diffusion_policy/inference.py \
 PIP is an inference-time technique.
 
 ```bash
+cd src/temporal_diffusion_policy
+
 # Note: change env_name to 'LiftQA' for manipulation task
-python src/temporal_diffusion_policy/inference.py \
+python inference.py \
     --checkpoint_path <path> \
     --env_name WaitAtGoal \
     --use_pause_induced_perturbation True \
@@ -335,7 +345,7 @@ python src/temporal_diffusion_policy/inference.py \
 Analyze waiting behavior and generate plots/tables from inference datasets:
 
 ```bash
-python src/temporal_diffusion_policy/analysis/waittime.py
+python analysis/waittime.py
 ```
 
 The script analyzes predefined dataset configurations (baseline, main experiments, extended experiments) and generates:
@@ -375,7 +385,7 @@ If you use this code in your research, please cite:
 
 - Built using elements from [Diffusion Policy](https://github.com/real-stanford/diffusion_policy).
 - PIP baseline implemented from [Chen et al., 2025](https://arxiv.org/pdf/2508.15669) paper.
-
+- PTP baseline implemented from [Torne et al., 2025](https://arxiv.org/abs/2505.09561) paper.
 ---
 
 ## Repositories
